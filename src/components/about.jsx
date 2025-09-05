@@ -5,39 +5,19 @@ class About extends React.Component {
     super();
     this.state = {
       skills: [
-        { id: "HTML5_skill", content: "HTML5", porcentage: "80%", value: "80" },
-        { id: "CSS3_skill", content: "CSS3", porcentage: "75%", value: "75" },
-        {
-          id: "JavaScript_skill",
-          content: "JavaScript",
-          porcentage: "90%",
-          value: "90"
-        },
-        { id: "PHP_skill", content: "PHP", porcentage: "70%", value: "70" },
-        {
-          id: "ReactJS_skill",
-          content: "ReactJS",
-          porcentage: "80%",
-          value: "80"
-        },
-        {
-          id: "Python_skill",
-          content: "Python",
-          porcentage: "75%",
-          value: "75"
-        },
-        {
-          id: "VanillaJS_skill",
-          content: "VanillaJS",
-          porcentage: "85%",
-          value: "85"
-        },
-        {
-          id: "Wordpress_skill",
-          content: "Wordpress",
-          porcentage: "80%",
-          value: "80"
-        }
+        { id: "React_skill", content: "React", porcentage: "90%", value: "90" },
+        { id: "NextJS_skill", content: "Next.js", porcentage: "80%", value: "80" },
+        { id: "TypeScript_skill", content: "TypeScript", porcentage: "80%", value: "80" },
+        { id: "TailwindCSS_skill", content: "TailwindCSS", porcentage: "75%", value: "75" },
+        { id: "Supabase_skill", content: "Supabase", porcentage: "70%", value: "70" },
+        { id: "Python_skill", content: "Python", porcentage: "80%", value: "80" },
+        { id: "JavaScript_skill", content: "JavaScript", porcentage: "90%", value: "90" },
+        { id: "SQL_skill", content: "SQL/Postgres", porcentage: "75%", value: "75" },
+        { id: "GoogleSEO_skill", content: "Google SEO", porcentage: "70%", value: "70" },
+        { id: "CSharp_skill", content: "C#", porcentage: "60%", value: "60" },
+        { id: "Java_skill", content: "Java", porcentage: "60%", value: "60" },
+        { id: "Unity_skill", content: "Unity", porcentage: "60%", value: "60" },
+        { id: "Cloudflare_skill", content: "Cloudflare", porcentage: "70%", value: "70" }
       ],
       about_me: [
         {
@@ -48,12 +28,12 @@ class About extends React.Component {
         {
           id: "second-p-about",
           content:
-            "EDUCACIÓN: Instituto Tecnológico de Costa Rica (TEC) | Ingeniería en Computadores - 2025\n\nSOFT SKILLS: Pensamiento crítico, trabajo en equipo, adaptabilidad, creatividad, resolución de problemas.\nIDIOMAS: Inglés intermedio, español nativo."
+            "EDUCACIÓN: Instituto Tecnológico de Costa Rica (TEC) | Ingeniería en Computación - 2025\n\nSOFT SKILLS: Pensamiento crítico, trabajo en equipo, adaptabilidad, creatividad, resolución de problemas.\nIDIOMAS: Inglés intermedio, español nativo."
         },
         {
           id: "third-p-about",
           content:
-            "SKILLS TÉCNICAS: React, Next.js, Supabase, TypeScript, TailwindCSS, Google SEO, Java, C#, Python, Android Studio, Javascript, SQL Server, Firebase, Unity, C++, Postgres SQL, Azure, Weaviate DB, Cloudflare, herramientas de desarrollo y diseño.\n\nPortafolio: https://sites.google.com/view/dominioyeudi\nmartinez/principal-page"
+            "SKILLS TÉCNICAS: React, Next.js, Supabase, TypeScript, TailwindCSS, Google SEO, Java, C#, Python, Android Studio, Javascript, SQL Server, Firebase, Unity, C++, Postgres SQL, Azure, Weaviate DB, Cloudflare, herramientas de desarrollo y diseño. "
         }
       ]
     };
