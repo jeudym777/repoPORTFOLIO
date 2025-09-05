@@ -25,10 +25,8 @@ import st5 from "../images/SKULLTROOP/skullgame4.png";
 import stvr1 from "../images/SKULLTROOPVR/SKTVR_1.png";
 import stvr2 from "../images/SKULLTROOPVR/SKTVR_2.png";
 import stvr3 from "../images/SKULLTROOPVR/SKTVR_3.png";
-import stvr4 from "../images/SKULLTROOPVR/SKTVR_4.png";
 import stvr5 from "../images/SKULLTROOPVR/SKTVR_5.png";
 import stvr6 from "../images/SKULLTROOPVR/SKTVR_6.png";
-import stvr7 from "../images/SKULLTROOPVR/SKTVR_7.png";
 import stvr8 from "../images/SKULLTROOPVR/SKTVR_8.png";
 import stvr9 from "../images/SKULLTROOPVR/SKTVR_9.png";
 import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
@@ -238,10 +236,8 @@ class Portfolio extends React.Component {
                 </a>
                 <a href={stvr2} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr3} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr4} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr5} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr6} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr7} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr8} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr9} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr10} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
