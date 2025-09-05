@@ -1,0 +1,358 @@
+import React from "react";
+
+// Imágenes de videojuegos
+import mm1 from "../images/MISIONMONEY/MISIONMONEYVR_1.png";
+import mm2 from "../images/MISIONMONEY/MISIONMONEYVR_2.png";
+import mm3 from "../images/MISIONMONEY/MISIONMONEYVR_3.png";
+import mm4 from "../images/MISIONMONEY/MISIONMONEYVR_4.png";
+import mm5 from "../images/MISIONMONEY/MISIONMONEYVR_5.png";
+import mm6 from "../images/MISIONMONEY/MISIONMONEYVR_6.png";
+import mm7 from "../images/MISIONMONEY/MISIONMONEYVR_7.png";
+import mm8 from "../images/MISIONMONEY/MISIONMONEYVR_8.png";
+
+import skf1 from "../images/SKULLFIGHT/SKF_1.jpg";
+import skf2 from "../images/SKULLFIGHT/SKF_2.jpg";
+import skf3 from "../images/SKULLFIGHT/SKF_3.jpg";
+import skf4 from "../images/SKULLFIGHT/SKF_4.jpg";
+import skf5 from "../images/SKULLFIGHT/SKF_5.jpg";
+
+import st1 from "../images/SKULLTROOP/skullgame.png";
+import st2 from "../images/SKULLTROOP/skullgame0.jpg";
+import st3 from "../images/SKULLTROOP/skullgame2.png";
+import st4 from "../images/SKULLTROOP/skullgame3.png";
+import st5 from "../images/SKULLTROOP/skullgame4.png";
+
+import stvr1 from "../images/SKULLTROOPVR/SKTVR_1.png";
+import stvr2 from "../images/SKULLTROOPVR/SKTVR_2.png";
+import stvr3 from "../images/SKULLTROOPVR/SKTVR_3.png";
+import stvr4 from "../images/SKULLTROOPVR/SKTVR_4.png";
+import stvr5 from "../images/SKULLTROOPVR/SKTVR_5.png";
+import stvr6 from "../images/SKULLTROOPVR/SKTVR_6.png";
+import stvr7 from "../images/SKULLTROOPVR/SKTVR_7.png";
+import stvr8 from "../images/SKULLTROOPVR/SKTVR_8.png";
+import stvr9 from "../images/SKULLTROOPVR/SKTVR_9.png";
+import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
+
+class Portfolio extends React.Component {
+  render() {
+    return (
+      <section id="work" className="portfolio-mf sect-pt4 route">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
+              <div className="title-box text-center">
+                <h3 className="title-a">Portfolio</h3>
+                <p className="subtitle-a">
+                  Explora mi trabajo como desarrollador web, de inteligencia artificial y videojuegos. Incluye sitios web en producción, detección de seguridad en tiempo real y juegos en 2D, 3D y realidad virtual. Más en: https://sites.google.com/view/dominioyeudi\nmartinez/principal-page
+                </p>
+                <div className="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          {/* WEB PROJECTS */}
+          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
+          <div className="row">
+            {/* Lawyer Olivia Oca — Legal Services */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
+                  <div className="work-img">
+                    <img src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
+                    <div className="w-more">
+                      <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
+                      <br />
+                      <span>Landing Page (2025)</span>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
+                        <li><b>Client:</b> Lic. Olivia Oca Varela</li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+                <a href={require("../images/LAWYER/lawyerpage_1.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/LAWYER/lawyerpage_4.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            {/* Medical Patient & Clinical Records (Closed System) */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
+                  <div className="work-img">
+                    <img src={require("../images/DOCTORPAGE/doctropage_3.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
+                    <div className="w-more">
+                      <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
+                      <br />
+                      <span>2025</span>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Stack:</b> React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</li>
+                        <li><b>Client:</b> Dra Daniela Oca Varela</li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+                <a href={require("../images/DOCTORPAGE/doctropage_1.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_2.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_4.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_5.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_6.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_7.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            {/* Pizzería Rinconcito La Fortuna — Landing Page */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
+                  <div className="work-img">
+                    <img src={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
+                    <div className="w-more">
+                      <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
+                      <br />
+                      <span>Landing Page (2025)</span>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
+                        <li><b>Rol:</b> Diseño UI, desarrollo front-end, copy básico y SEO on-page.</li>
+                        <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
+                        <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_3.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_4.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_5.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_6.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+          </div>
+          {/* AI PROJECTS */}
+          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
+          <div className="row">
+            {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
+                  <div className="work-img">
+                    <img src={require("../images/IASECURITY/securityIA_1.png")} alt="Security AI" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Security AI Modules — Anti-spoofing & Weapon Detection (PoC)</h2>
+                    <div className="w-more">
+                      <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
+                      <br />
+                      <span>ITCR / Poder Judicial Costa Rica (2025)</span>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Stack:</b> Python DL, Facenet, Yolov8, training antispoofing and weapon detect models, opensource datasets</li>
+                        <li>Real-time computer vision pipelines</li>
+                        <li>Client: ITCR y Poder Judicial De Costa Rica</li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+                <a href={require("../images/IASECURITY/securityIA_2.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_3.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_4.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_5.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_6.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_7.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_8.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_9.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            {/* Aquí puedes agregar nuevas imágenes para el proyecto AI si lo deseas */}
+          </div>
+          {/* VIDEOGAMES */}
+          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Videogames</h4>
+          <div className="row">
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={st1} data-lightbox="gallery-skulltroop">
+                  <div className="work-img">
+                    <img src={st1} alt="Skull Troop" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Skull Troop (PC, Mobile)</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">Unity 3D, Mobile Optimization, UI, Shooter/Tower Defense</span>
+                        <br />
+                        <span>It’s a combination of shooter and tower defense. Command your soldiers, protect the General of our army, conquer territories, and eliminate the General of the Enemy army to win the battle. Good luck!</span>
+                        <br />
+                        <a href="https://yeoogames.itch.io/skull-troop" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Unity 3D</b></li>
+                          <li><b>Mobile Performance Optimization:</b></li>
+                          <ul>
+                            <li>Occlusion Culling: Rendering only what's necessary, improving performance.</li>
+                            <li>Texture Compression and Mesh Optimization: Reducing texture and model complexity to improve frame rate and reduce memory consumption.</li>
+                          </ul>
+                          <li><b>User Interface (UI):</b> Intuitive and user-friendly interface for touch screens, optimizing controls and accessibility for Android.</li>
+                          <li><b>Unity Input System:</b> Control commands on touch screens, adapting shooter gameplay for mobile devices.</li>
+                          <li><b>Testing and Debugging on Real Devices:</b> Ensuring compatibility and optimal performance across different Android hardware.</li>
+                          <li><b>Multi-Platform Deployment:</b> Handling configuration differences between Oculus Quest and Android.</li>
+                          <li><b>Play Store:</b> APK to AAB transformation and permission handling.</li>
+                        </ul>
+                      </div>
+                  </div>
+                </a>
+                <a href={st2} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
+                <a href={st3} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
+                <a href={st4} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
+                <a href={st5} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={stvr1} data-lightbox="gallery-skulltroopvr">
+                  <div className="work-img">
+                    <img src={stvr1} alt="Skull Troop VR" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Skull Troop VR (Quest 2)</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">Unity XR, VR UX, C#, Hurricane VR, XR Interaction Toolkit</span>
+                        <br />
+                        <span>You are the general of the army, send your soldiers to eliminate the enemy, and don’t neglect the towers!</span>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
+                          <li><b>C#</b></li>
+                          <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
+                          <li><b>Hurricane VR:</b> Advanced integration for detailed physical interaction in virtual reality.</li>
+                          <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
+                          <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
+                          <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
+                          <li><b>Multimedia Integration:</b> 3D models of tanks, airplanes, and special effects (explosions, missiles).</li>
+                          <li><b>Physics-Based Interaction:</b> Physical interactions for weapons and defenses.</li>
+                          <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
+                          <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
+                        </ul>
+                      </div>
+                  </div>
+                </a>
+                <a href={stvr2} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr3} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr4} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr5} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr6} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr7} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr8} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr9} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={stvr10} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={skf1} data-lightbox="gallery-skullfight">
+                  <div className="work-img">
+                    <img src={skf1} alt="Skull Fights" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Skull Fights (PC/Mobile)</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">Unity 3D, C#, Blender, Game Design, Audio Design</span>
+                        <br />
+                        <span>Hand-to-hand combat game, only the one with the most skills survives in the octagon.</span>
+                        <br />
+                        <a href="https://yeoogames.itch.io/skull-fight" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Unity 3D C#</b></li>
+                          <li><b>Game Design:</b> Mechanics, gameplay, levels, game balance, and user experience.</li>
+                          <li><b>3D Modeling:</b> Blender and makehuman-community</li>
+                          <li><b>Audio Design and Composition:</b> Sound effects and original music using FL Studio and Bandlab.</li>
+                          <li><b>User Interface (UI) Design:</b> Interface elements and navigation.</li>
+                          <li><b>Shaders and Post-Processing:</b> Unity Post-Processing Stack.</li>
+                          <li><b>Project Management:</b> Full game lifecycle management, from planning to release and testing.</li>
+                          <li><b>Quality Assurance (QA):</b> Testing and performance optimization.</li>
+                          <li><b>Multimedia Integration:</b> Images, animations, and music in Unity.</li>
+                        </ul>
+                      </div>
+                  </div>
+                </a>
+                <a href={skf2} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
+                <a href={skf3} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
+                <a href={skf4} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
+                <a href={skf5} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={mm1} data-lightbox="gallery-misionmoney">
+                  <div className="work-img">
+                    <img src={mm1} alt="Mission Money" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Mission Money (PC/VR)</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">Unity 3D, C#, XR Interaction Toolkit, VR Optimization, Game Design, Audio Design</span>
+                        <br />
+                        <span>Shooter for VR. They stole from the wrong person—get your money back by eliminating the enemies in a nighttime ambush.</span>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
+                          <li><b>C#</b></li>
+                          <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
+                          <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
+                          <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
+                          <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
+                          <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
+                          <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
+                        </ul>
+                      </div>
+                  </div>
+                </a>
+                <a href={mm2} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm3} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm4} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm5} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm6} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm7} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+                <a href={mm8} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+            {/* Nuevo juego: Penguin Adventure */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_1.png")} data-lightbox="gallery-penguinadventure">
+                  <div className="work-img">
+                    <img src={require("../images/PENGUINADVENTURE/MISIONMONEY_1.png")} alt="Penguin Adventure" className="img-fluid" />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title">Penguin Adventure (2D)</h2>
+                    <div className="w-more">
+                      <span className="w-ctegory">Unity 2D, C#, Game Design, Level Design, Physics 2D, Audio, UI, AI</span>
+                      <br />
+                      <span>My first project!!! Educational 2D adventure game, you must collect solar panels and survive the obstacles, storytelling included.</span>
+                      <br />
+                      <a href="https://yeoogames.itch.io/penguin-adventure" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Unity 2D Development:</b> 2D platformer game from scratch, game logic, mechanics, and level design.</li>
+                        <li><b>C# Scripting:</b> Character logic, collision detection, player movement, enemy control.</li>
+                        <li><b>Game Design:</b> Gameplay, platform mechanics, obstacle creation (traps, enemies).</li>
+                        <li><b>Level Design:</b> Unity Tilemap for environments.</li>
+                        <li><b>Physics 2D:</b> Collisions, moving platforms, interactive elements.</li>
+                        <li><b>Audio Design:</b> Sound effects and music integration.</li>
+                        <li><b>User Interface (UI) Design:</b> HUD, menus, interactive elements.</li>
+                        <li><b>Basic AI Scripting:</b> Enemy behaviors (movement, attacks).</li>
+                        <li><b>Character Controller:</b> Custom 2D controller for running, jumping, attacking with a bat.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_2.png")} data-lightbox="gallery-penguinadventure" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_3.png")} data-lightbox="gallery-penguinadventure" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+export default Portfolio;

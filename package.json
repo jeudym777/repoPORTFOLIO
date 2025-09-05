@@ -1,0 +1,45 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "gh-pages": "^2.2.0",
+  "jquery": "^3.4.1",
+  "lightbox2": "^2.11.0",
+  "sass": "^1.69.5",
+  "normalize.css": "^8.0.1",
+    "popper.js": "^1.15.0",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-scripts": "^5.0.1",
+    
+    "typed.js": "^2.0.10"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+
+    "homepage": "https://repoportfolio.pages.dev/repoPORTFOLIO",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
