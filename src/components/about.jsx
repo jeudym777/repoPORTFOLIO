@@ -29,12 +29,10 @@ class About extends React.Component {
           id: "second-p-about",
           content:
             "EDUCACIÓN: Instituto Tecnológico de Costa Rica (TEC) | Ingeniería en Computación - 2025\n\nSOFT SKILLS: Pensamiento crítico, trabajo en equipo, adaptabilidad, creatividad, resolución de problemas.\nIDIOMAS: Inglés intermedio, español nativo."
-        },
-        {
-          id: "third-p-about",
-          content:
-            "SKILLS TÉCNICAS: React, Next.js, Supabase, TypeScript, TailwindCSS, Google SEO, Java, C#, Python, Android Studio, Javascript, SQL Server, Firebase, Unity, C++, Postgres SQL, Azure, Weaviate DB, Cloudflare, herramientas de desarrollo y diseño. "
         }
+      ],
+      tech_skills: [
+        "React", "Next.js", "Supabase", "TypeScript", "TailwindCSS", "Google SEO", "Java", "C#", "Python", "Android Studio", "Javascript", "SQL Server", "Firebase", "Unity", "C++", "Postgres SQL", "Azure", "Weaviate DB", "Cloudflare", "herramientas de desarrollo y diseño"
       ]
     };
   }
@@ -100,6 +98,22 @@ class About extends React.Component {
                           </p>
                         );
                       })}
+                      <div style={{ marginTop: 20 }}>
+                        <strong>SKILLS TÉCNICAS:</strong>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
+                          {this.state.tech_skills.map(skill => (
+                            <span key={skill} style={{
+                              background: '#f1f1f1',
+                              color: '#333',
+                              borderRadius: '16px',
+                              padding: '6px 14px',
+                              fontSize: '0.95em',
+                              fontWeight: 500,
+                              boxShadow: '0 1px 2px rgba(0,0,0,0.07)'
+                            }}>{skill}</span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
