@@ -80,11 +80,12 @@ class Portfolio extends React.Component {
             {/* Medical Patient & Clinical Records (Closed System) */}
             <div className="col-md-4">
               <div className="work-box">
-                <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
                     <img src={require("../images/DOCTORPAGE/doctropage_3.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
+                  </a>
+                </div>
+                <div className="work-content">
                     <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
                     <div className="w-more">
                       <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
@@ -96,7 +97,7 @@ class Portfolio extends React.Component {
                       </ul>
                     </div>
                   </div>
-                </a>
+                {/* cierre de work-content, no debe haber </a> aquí */}
                 <a href={require("../images/DOCTORPAGE/doctropage_1.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/DOCTORPAGE/doctropage_2.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/DOCTORPAGE/doctropage_4.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
@@ -108,11 +109,12 @@ class Portfolio extends React.Component {
             {/* Pizzería Rinconcito La Fortuna — Landing Page */}
             <div className="col-md-4">
               <div className="work-box">
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
                     <img src={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
+                  </a>
+                </div>
+                <div className="work-content">
                     <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
                     <div className="w-more">
                       <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
@@ -129,7 +131,7 @@ class Portfolio extends React.Component {
                       </ul>
                     </div>
                   </div>
-                </a>
+                {/* cierre de work-content, no debe haber </a> aquí */}
                 <a href={require("../images/PIZZERIA/PIZZARINCONCITO_3.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/PIZZERIA/PIZZARINCONCITO_4.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/PIZZERIA/PIZZARINCONCITO_5.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
@@ -182,11 +184,12 @@ class Portfolio extends React.Component {
           <div className="row">
             <div className="col-md-4">
               <div className="work-box">
-                <a href={st1} data-lightbox="gallery-skulltroop">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={st1} data-lightbox="gallery-skulltroop">
                     <img src={st1} alt="Skull Troop" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
+                  </a>
+                </div>
+                <div className="work-content">
                     <h2 className="w-title">Skull Troop (PC, Mobile)</h2>
                       <div className="w-more">
                         <span className="w-ctegory">Unity 3D, Mobile Optimization, UI, Shooter/Tower Defense</span>
@@ -214,7 +217,7 @@ class Portfolio extends React.Component {
                         </ul>
                       </div>
                   </div>
-                </a>
+                {/* cierre de work-content, no debe haber </a> aquí */}
                 <a href={st2} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
                 <a href={st3} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
                 <a href={st4} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
@@ -223,11 +226,11 @@ class Portfolio extends React.Component {
             </div>
             <div className="col-md-4">
               <div className="work-box">
-                <a href={stvr1} data-lightbox="gallery-skulltroopvr">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={stvr1} data-lightbox="gallery-skulltroopvr">
                     <img src={stvr1} alt="Skull Troop VR" className="img-fluid" />
-                  </div>
-                </a>
+                  </a>
+                </div>
                 <div className="work-content">
                   <h2 className="w-title">Skull Troop VR (Quest 2)</h2>
                   <div className="w-more">
@@ -265,11 +268,12 @@ class Portfolio extends React.Component {
             </div>
             <div className="col-md-4">
               <div className="work-box">
-                <a href={skf1} data-lightbox="gallery-skullfight">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={skf1} data-lightbox="gallery-skullfight">
                     <img src={skf1} alt="Skull Fights" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
+                  </a>
+                </div>
+                <div className="work-content">
                     <h2 className="w-title">Skull Fights (PC/Mobile)</h2>
                       <div className="w-more">
                         <span className="w-ctegory">Unity 3D, C#, Blender, Game Design, Audio Design</span>
@@ -295,7 +299,7 @@ class Portfolio extends React.Component {
                         </ul>
                       </div>
                   </div>
-                </a>
+                {/* cierre de work-content, no debe haber </a> aquí */}
                 <a href={skf2} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
                 <a href={skf3} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
                 <a href={skf4} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
@@ -304,11 +308,12 @@ class Portfolio extends React.Component {
             </div>
             <div className="col-md-4">
               <div className="work-box">
-                <a href={mm1} data-lightbox="gallery-misionmoney">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={mm1} data-lightbox="gallery-misionmoney">
                     <img src={mm1} alt="Mission Money" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
+                  </a>
+                </div>
+                <div className="work-content">
                     <h2 className="w-title">Mission Money (PC/VR)</h2>
                       <div className="w-more">
                         <span className="w-ctegory">Unity 3D, C#, XR Interaction Toolkit, VR Optimization, Game Design, Audio Design</span>
@@ -331,7 +336,7 @@ class Portfolio extends React.Component {
                         </ul>
                       </div>
                   </div>
-                </a>
+                {/* cierre de work-content, no debe haber </a> aquí */}
                 <a href={mm2} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
                 <a href={mm3} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
                 <a href={mm4} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
