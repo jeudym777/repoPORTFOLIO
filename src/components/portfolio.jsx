@@ -41,7 +41,7 @@ class Portfolio extends React.Component {
               <div className="title-box text-center">
                 <h3 className="title-a">Portfolio</h3>
                 <p className="subtitle-a">
-                  Explora mi trabajo como desarrollador web, de inteligencia artificial y videojuegos. Incluye sitios web en producción, detección de seguridad en tiempo real y juegos en 2D, 3D y realidad virtual. Más en: https://sites.google.com/view/dominioyeudi\nmartinez/principal-page
+                  Explora mi trabajo como desarrollador web, de inteligencia artificial y videojuegos. Incluye sitios web en producción, detección de seguridad en tiempo real y juegos en 2D, 3D y realidad virtual.
                 </p>
                 <div className="line-mf"></div>
               </div>
@@ -53,23 +53,26 @@ class Portfolio extends React.Component {
             {/* Lawyer Olivia Oca — Legal Services */}
             <div className="col-md-4">
               <div className="work-box">
-                <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
                     <img src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
+                    <br />
+                    <span>Landing Page (2025)</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
+                      <li><b>Client:</b> Lic. Olivia Oca Varela</li>
+                      <li>
+                        <a href="https://abogadamariaoliviaocavarela.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                      </li>
+                    </ul>
                   </div>
-                  <div className="work-content">
-                    <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
-                      <br />
-                      <span>Landing Page (2025)</span>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
-                        <li><b>Client:</b> Lic. Olivia Oca Varela</li>
-                      </ul>
-                    </div>
-                  </div>
-                </a>
+                </div>
                 <a href={require("../images/LAWYER/lawyerpage_1.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/LAWYER/lawyerpage_4.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
               </div>
@@ -120,6 +123,9 @@ class Portfolio extends React.Component {
                         <li><b>Rol:</b> Diseño UI, desarrollo front-end, copy básico y SEO on-page.</li>
                         <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
                         <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
+                        <li>
+                          <a href="https://pizzeria-rinconcito-lafortuna.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -137,24 +143,28 @@ class Portfolio extends React.Component {
             {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
             <div className="col-md-4">
               <div className="work-box">
-                <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
-                  <div className="work-img">
+                <div className="work-img">
+                  <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
                     <img src={require("../images/IASECURITY/securityIA_1.png")} alt="Security AI" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Security AI Modules — Anti-spoofing & Weapon Detection (PoC)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
+                    <br />
+                    <span>ITCR / Poder Judicial Costa Rica (2025)</span>
+                    <a href="https://youtu.be/2W7S_aO_W9Q" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                      Ver demo en YouTube
+                    </a>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Stack:</b> Python DL, Facenet, Yolov8, training antispoofing and weapon detect models, opensource datasets</li>
+                      <li>Real-time computer vision pipelines</li>
+                      <li>Client: ITCR y Poder Judicial De Costa Rica</li>
+                    </ul>
                   </div>
-                  <div className="work-content">
-                    <h2 className="w-title">Security AI Modules — Anti-spoofing & Weapon Detection (PoC)</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
-                      <br />
-                      <span>ITCR / Poder Judicial Costa Rica (2025)</span>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li><b>Stack:</b> Python DL, Facenet, Yolov8, training antispoofing and weapon detect models, opensource datasets</li>
-                        <li>Real-time computer vision pipelines</li>
-                        <li>Client: ITCR y Poder Judicial De Costa Rica</li>
-                      </ul>
-                    </div>
-                  </div>
-                </a>
+                </div>
                 <a href={require("../images/IASECURITY/securityIA_2.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/IASECURITY/securityIA_3.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/IASECURITY/securityIA_4.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
@@ -184,6 +194,11 @@ class Portfolio extends React.Component {
                         <span>It’s a combination of shooter and tower defense. Command your soldiers, protect the General of our army, conquer territories, and eliminate the General of the Enemy army to win the battle. Good luck!</span>
                         <br />
                         <a href="https://yeoogames.itch.io/skull-troop" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
+                        <br />
+                        <a href="https://www.youtube.com/watch?v=WzLCk57-Pow" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                          Ver demo en YouTube
+                        </a>
                         <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                           <li><b>Unity 3D</b></li>
                           <li><b>Mobile Performance Optimization:</b></li>
@@ -212,28 +227,33 @@ class Portfolio extends React.Component {
                   <div className="work-img">
                     <img src={stvr1} alt="Skull Troop VR" className="img-fluid" />
                   </div>
-                  <div className="work-content">
-                    <h2 className="w-title">Skull Troop VR (Quest 2)</h2>
-                      <div className="w-more">
-                        <span className="w-ctegory">Unity XR, VR UX, C#, Hurricane VR, XR Interaction Toolkit</span>
-                        <br />
-                        <span>You are the general of the army, send your soldiers to eliminate the enemy, and don’t neglect the towers!</span>
-                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                          <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
-                          <li><b>C#</b></li>
-                          <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
-                          <li><b>Hurricane VR:</b> Advanced integration for detailed physical interaction in virtual reality.</li>
-                          <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
-                          <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
-                          <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
-                          <li><b>Multimedia Integration:</b> 3D models of tanks, airplanes, and special effects (explosions, missiles).</li>
-                          <li><b>Physics-Based Interaction:</b> Physical interactions for weapons and defenses.</li>
-                          <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
-                          <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
-                        </ul>
-                      </div>
-                  </div>
                 </a>
+                <div className="work-content">
+                  <h2 className="w-title">Skull Troop VR (Quest 2)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Unity XR, VR UX, C#, Hurricane VR, XR Interaction Toolkit</span>
+                    <br />
+                    <span>You are the general of the army, send your soldiers to eliminate the enemy, and don’t neglect the towers!</span>
+                    <br />
+                    <a href="https://youtu.be/tlA6WmyO5rM" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                      Ver demo en YouTube
+                    </a>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
+                      <li><b>C#</b></li>
+                      <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
+                      <li><b>Hurricane VR:</b> Advanced integration for detailed physical interaction in virtual reality.</li>
+                      <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
+                      <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
+                      <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
+                      <li><b>Multimedia Integration:</b> 3D models of tanks, airplanes, and special effects (explosions, missiles).</li>
+                      <li><b>Physics-Based Interaction:</b> Physical interactions for weapons and defenses.</li>
+                      <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
+                      <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
+                    </ul>
+                  </div>
+                </div>
                 <a href={stvr2} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr3} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
                 <a href={stvr5} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
@@ -257,6 +277,11 @@ class Portfolio extends React.Component {
                         <span>Hand-to-hand combat game, only the one with the most skills survives in the octagon.</span>
                         <br />
                         <a href="https://yeoogames.itch.io/skull-fight" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
+                        <br />
+                        <a href="https://www.youtube.com/watch?v=HGFKOuOUDhY" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                          Ver demo en YouTube
+                        </a>
                         <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                           <li><b>Unity 3D C#</b></li>
                           <li><b>Game Design:</b> Mechanics, gameplay, levels, game balance, and user experience.</li>
@@ -289,6 +314,11 @@ class Portfolio extends React.Component {
                         <span className="w-ctegory">Unity 3D, C#, XR Interaction Toolkit, VR Optimization, Game Design, Audio Design</span>
                         <br />
                         <span>Shooter for VR. They stole from the wrong person—get your money back by eliminating the enemies in a nighttime ambush.</span>
+                        <br />
+                        <a href="https://www.youtube.com/watch?v=a9VQpjFfpTU" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                          Ver demo en YouTube
+                        </a>
                         <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                           <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
                           <li><b>C#</b></li>
