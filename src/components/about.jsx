@@ -4,21 +4,6 @@ class About extends React.Component {
   constructor() {
     super();
     this.state = {
-      skills: [
-        { id: "React_skill", content: "React", porcentage: "90%", value: "90" },
-        { id: "NextJS_skill", content: "Next.js", porcentage: "80%", value: "80" },
-        { id: "TypeScript_skill", content: "TypeScript", porcentage: "80%", value: "80" },
-        { id: "TailwindCSS_skill", content: "TailwindCSS", porcentage: "75%", value: "75" },
-        { id: "Supabase_skill", content: "Supabase", porcentage: "70%", value: "70" },
-        { id: "Python_skill", content: "Python", porcentage: "80%", value: "80" },
-        { id: "JavaScript_skill", content: "JavaScript", porcentage: "90%", value: "90" },
-        { id: "SQL_skill", content: "SQL/Postgres", porcentage: "75%", value: "75" },
-        { id: "GoogleSEO_skill", content: "Google SEO", porcentage: "70%", value: "70" },
-        { id: "CSharp_skill", content: "C#", porcentage: "60%", value: "60" },
-        { id: "Java_skill", content: "Java", porcentage: "60%", value: "60" },
-        { id: "Unity_skill", content: "Unity", porcentage: "60%", value: "60" },
-        { id: "Cloudflare_skill", content: "Cloudflare", porcentage: "70%", value: "70" }
-      ],
       about_me: [
         {
           id: "first-p-about",
@@ -62,28 +47,21 @@ class About extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="skill-mf">
-                      {/* <p className="title-s">Skill</p> */}
-                      {this.state.skills.map(skill => {
-                        return (
-                          <React.Fragment key={skill.id}>
-                            <span>{skill.content}</span>{" "}
-                            <span className="pull-right">
-                              {skill.porcentage}
-                            </span>
-                            <div className="progress">
-                              <div
-                                className="progress-bar"
-                                role="progressbar"
-                                style={{ width: skill.porcentage }}
-                                aria-valuenow={skill.value}
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </React.Fragment>
-                        );
-                      })}
+                    <div style={{ marginTop: 20 }}>
+                      <strong>SKILLS TÉCNICAS:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
+                        {this.state.tech_skills.map(skill => (
+                          <span key={skill} style={{
+                            background: '#f1f1f1',
+                            color: '#333',
+                            borderRadius: '16px',
+                            padding: '6px 14px',
+                            fontSize: '0.95em',
+                            fontWeight: 500,
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.07)'
+                          }}>{skill}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -98,22 +76,6 @@ class About extends React.Component {
                           </p>
                         );
                       })}
-                      <div style={{ marginTop: 20 }}>
-                        <strong>SKILLS TÉCNICAS:</strong>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
-                          {this.state.tech_skills.map(skill => (
-                            <span key={skill} style={{
-                              background: '#f1f1f1',
-                              color: '#333',
-                              borderRadius: '16px',
-                              padding: '6px 14px',
-                              fontSize: '0.95em',
-                              fontWeight: 500,
-                              boxShadow: '0 1px 2px rgba(0,0,0,0.07)'
-                            }}>{skill}</span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
