@@ -139,6 +139,39 @@ class Portfolio extends React.Component {
                 <a href={require("../images/PIZZERIA/agoogleindexacion.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+            {/* Hotel Campo Arenal — Sitio Oficial */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/HotelCampoArenal/hcArenal.png")} data-lightbox="gallery-hotel-campo-arenal">
+                    <img src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Hotel Campo Arenal — Sitio Oficial</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Turismo en La Fortuna, reservas y contacto directo</span>
+                    <br />
+                    <span>Sitio web (2025)</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li>Presentación clara del hotel y su propuesta para disfrutar de La Fortuna, Costa Rica.</li>
+                      <li>Contenido orientado al huésped: fotos del lugar, descripción de la experiencia y formas rápidas de contacto.</li>
+                      <li>Navegación simple por secciones como Inicio, Habitaciones, Galería, Ubicación y Contacto.</li>
+                      <li>Llamados a la acción visibles para consultas y reservas directas.</li>
+                      <li>
+                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Imágenes adicionales para el lightbox */}
+                <a href={require("../images/HotelCampoArenal/ahcArenal000.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal3.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal4.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal5.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/googleSearch00.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
           </div>
           {/* AI PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
