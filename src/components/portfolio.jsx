@@ -204,6 +204,36 @@ class Portfolio extends React.Component {
                 <a href={require("../images/TICOTREKKER/ticotreekerimages7.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+            {/* Construcciones La Fortuna — Sitio Web */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/contructoraAPP/contru1.png")} data-lightbox="gallery-construcciones-lafortuna">
+                    <img src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Construcciones La Fortuna — Sitio Web</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Servicios de construcción y remodelación en La Fortuna</span>
+                    <br />
+                    <span>Sitio web (2025)</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li>Presentación de servicios clave: construcción, remodelación y mantenimiento.</li>
+                      <li>Portafolio visual de trabajos realizados para generar confianza.</li>
+                      <li>Cobertura en La Fortuna y zonas aledañas con contacto directo para cotizaciones.</li>
+                      <li>Llamados a la acción visibles para solicitar presupuesto y agendar visita.</li>
+                      <li>
+                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Imágenes adicionales para el lightbox */}
+                <a href={require("../images/contructoraAPP/constru2.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
           </div>
           {/* AI PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
