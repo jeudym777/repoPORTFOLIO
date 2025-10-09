@@ -264,6 +264,36 @@ class Portfolio extends React.Component {
                 <a href={require("../images/PerrosPAGE/perroapp3.png")} data-lightbox="gallery-adiestra-conecta" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+            {/* Green Eco Park — Atracciones y Naturaleza */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/GREENECOPARK/greenecoparkimage0.png")} data-lightbox="gallery-green-eco-park">
+                    <img src={require("../images/GREENECOPARK/greenecoparkimage0.png")} alt="Green Eco Park — Atracciones y Naturaleza" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Green Eco Park — Atracciones y Naturaleza</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Parque ecológico y actividades al aire libre en La Fortuna</span>
+                    <br />
+                    <span>Sitio web (2025)</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li>Experiencia familiar en medio de la naturaleza: senderos, miradores y diversión al aire libre.</li>
+                      <li>Galería con fotos reales del parque para conocer el recorrido antes de visitar.</li>
+                      <li>Información clara sobre horarios, ubicación, tarifas y contacto directo.</li>
+                      <li>Llamados a la acción visibles para planear la visita y resolver dudas.</li>
+                      <li>
+                        <a href="https://greenecopark.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Imágenes adicionales para el lightbox */}
+                <a href={require("../images/GREENECOPARK/greenecoparkinimage1.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/GREENECOPARK/greenecoparkimage2.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
           </div>
           {/* AI PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
