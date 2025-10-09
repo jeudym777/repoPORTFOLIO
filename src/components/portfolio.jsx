@@ -234,34 +234,34 @@ class Portfolio extends React.Component {
                 <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
-            {/* Green Eco Park — Parque Canino (PerrosPAGE) */}
+            {/* Adiestra y Conecta — Adiestramiento Canino (PerrosPAGE) */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/PerrosPAGE/greenecoparkimage0.png")} data-lightbox="gallery-green-eco-park">
-                    <img src={require("../images/PerrosPAGE/greenecoparkimage0.png")} alt="Green Eco Park — Parque Canino" className="img-fluid" />
+                  <a href={require("../images/PerrosPAGE/perroapp1.png")} data-lightbox="gallery-adiestra-conecta">
+                    <img src={require("../images/PerrosPAGE/perroapp1.png")} alt="Adiestra y Conecta — Adiestramiento Canino" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Green Eco Park — Parque Canino</h2>
+                  <h2 className="w-title">Adiestra y Conecta — Adiestramiento Canino</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Parque para mascotas y recreación al aire libre</span>
+                    <span className="w-ctegory">Educación canina, obediencia y convivencia en casa</span>
                     <br />
                     <span>Sitio web (2025)</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li>Espacio pensado para disfrutar con tu mascota: áreas verdes, juegos y aire libre.</li>
-                      <li>Galería con fotos reales del parque para conocer la experiencia antes de visitar.</li>
-                      <li>Secciones claras para horarios, ubicación, normas del parque y contacto.</li>
-                      <li>Llamados a la acción para planear tu visita y resolver dudas rápidamente.</li>
+                      <li>Programas de adiestramiento enfocados en obediencia básica, corrección de conducta y socialización.</li>
+                      <li>Sesiones personalizadas 1:1 y guías prácticas para mejorar la convivencia en casa.</li>
+                      <li>Información clara sobre servicios, paquetes, ubicación y contacto directo.</li>
+                      <li>Llamados a la acción visibles para reservar sesión y hacer consultas por WhatsApp.</li>
                       <li>
-                        <span style={{fontWeight:'bold', color:'#007bff', cursor:'default', opacity:0.7}}>Sitio web próximamente</span>
+                        <a href="https://adiestrayconecta.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 {/* Imágenes adicionales para el lightbox */}
-                <a href={require("../images/PerrosPAGE/greenecoparkinimage1.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PerrosPAGE/greenecoparkimage2.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PerrosPAGE/perroapp2.png")} data-lightbox="gallery-adiestra-conecta" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PerrosPAGE/perroapp3.png")} data-lightbox="gallery-adiestra-conecta" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
           </div>
