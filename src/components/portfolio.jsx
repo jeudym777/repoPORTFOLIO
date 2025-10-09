@@ -234,6 +234,36 @@ class Portfolio extends React.Component {
                 <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+            {/* Green Eco Park — Parque Canino (PerrosPAGE) */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/PerrosPAGE/greenecoparkimage0.png")} data-lightbox="gallery-green-eco-park">
+                    <img src={require("../images/PerrosPAGE/greenecoparkimage0.png")} alt="Green Eco Park — Parque Canino" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Green Eco Park — Parque Canino</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Parque para mascotas y recreación al aire libre</span>
+                    <br />
+                    <span>Sitio web (2025)</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li>Espacio pensado para disfrutar con tu mascota: áreas verdes, juegos y aire libre.</li>
+                      <li>Galería con fotos reales del parque para conocer la experiencia antes de visitar.</li>
+                      <li>Secciones claras para horarios, ubicación, normas del parque y contacto.</li>
+                      <li>Llamados a la acción para planear tu visita y resolver dudas rápidamente.</li>
+                      <li>
+                        <span style={{fontWeight:'bold', color:'#007bff', cursor:'default', opacity:0.7}}>Sitio web próximamente</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Imágenes adicionales para el lightbox */}
+                <a href={require("../images/PerrosPAGE/greenecoparkinimage1.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PerrosPAGE/greenecoparkimage2.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
           </div>
           {/* AI PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
