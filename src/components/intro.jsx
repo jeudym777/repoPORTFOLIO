@@ -28,7 +28,7 @@ class Intro extends React.Component {
                 }}
               />
               <div>
-                <h1 className="intro-title mb-4">Hello, I am Yeudi Martinez Computering Engineer</h1>
+                <h1 className="intro-title mb-4">Hello, I am Yeudi Martinez Computer Engineer</h1>
                 <p className="intro-subtitle">
                   <span className="text-slider-items"></span>
                   <strong className="text-slider">
