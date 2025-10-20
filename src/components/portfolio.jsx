@@ -1,5 +1,8 @@
 import React from "react";
 
+// Video promocional
+import promoVideo from "../videos/CLIP_PROMORUFFTUFF.mp4";
+
 // Imágenes de videojuegos
 import mm1 from "../images/MISIONMONEY/MISIONMONEYVR_1.png";
 import mm2 from "../images/MISIONMONEY/MISIONMONEYVR_2.png";
@@ -44,6 +47,27 @@ class Portfolio extends React.Component {
                   Explora mi trabajo como desarrollador web, de inteligencia artificial y videojuegos. Incluye sitios web en producción, detección de seguridad en tiempo real y juegos en 2D, 3D y realidad virtual.
                 </p>
                 <div className="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          {/* FEATURED VIDEO */}
+          <div className="row">
+            <div className="col-sm-12">
+              <div className="video-section text-center mb-5">
+                <h4 className="mb-4" style={{fontWeight:'bold'}}>Video Promocional</h4>
+                <div className="video-container" style={{maxWidth: '800px', margin: '0 auto'}}>
+                  <video 
+                    controls 
+                    style={{width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)'}}
+                    poster="" 
+                  >
+                    <source src={promoVideo} type="video/mp4" />
+                    Tu navegador no soporta la reproducción de video.
+                  </video>
+                  <p className="mt-3" style={{color: '#666', fontSize: '0.95em'}}>
+                    Clip promocional de mis proyectos de desarrollo de videojuegos
+                  </p>
+                </div>
               </div>
             </div>
           </div>
