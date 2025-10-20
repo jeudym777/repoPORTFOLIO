@@ -1,7 +1,7 @@
 import React from "react";
 
 // Video promocional
-import promoVideo from "../videos/CLIP_PROMORUFFTUFF.mp4";
+import promoVideo from "../videos/CLIP_PROMORUFFTUFF_original.mp4";
 
 // Imágenes de videojuegos
 import mm1 from "../images/MISIONMONEY/MISIONMONEYVR_1.png";
@@ -54,7 +54,7 @@ class Portfolio extends React.Component {
           <div className="row">
             <div className="col-sm-12">
               <div className="video-section text-center mb-5">
-                <h4 className="mb-4" style={{fontWeight:'bold'}}>Video Promocional</h4>
+                <h4 className="mb-4" style={{fontWeight:'bold'}}>Ruff and Tuff gameplay</h4>
                 <div className="video-container" style={{maxWidth: '800px', margin: '0 auto'}}>
                   <video 
                     controls 
@@ -65,7 +65,7 @@ class Portfolio extends React.Component {
                     Tu navegador no soporta la reproducción de video.
                   </video>
                   <p className="mt-3" style={{color: '#666', fontSize: '0.95em'}}>
-                    Clip promocional de mis proyectos de desarrollo de videojuegos
+                    Client: Toledo Again and DjP
                   </p>
                 </div>
               </div>
