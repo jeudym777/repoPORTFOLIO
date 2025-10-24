@@ -172,18 +172,19 @@ class Portfolio extends React.Component {
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Hotel Campo Arenal — Sitio Oficial</h2>
+                  <h2 className="w-title">Hotel Campo Arenal — Official Site</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Turismo en La Fortuna, reservas y contacto directo</span>
+                    <span className="w-ctegory">Tourism in La Fortuna, reservations & direct contact</span>
                     <br />
-                    <span>Sitio web (2025)</span>
+                    <span>Web Site (2025)</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li>Presentación clara del hotel y su propuesta para disfrutar de La Fortuna, Costa Rica.</li>
-                      <li>Contenido orientado al huésped: fotos del lugar, descripción de la experiencia y formas rápidas de contacto.</li>
-                      <li>Navegación simple por secciones como Inicio, Habitaciones, Galería, Ubicación y Contacto.</li>
-                      <li>Llamados a la acción visibles para consultas y reservas directas.</li>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Clear hotel presentation and its proposal to enjoy La Fortuna, Costa Rica.</li>
+                      <li>Guest-oriented content: photos of the place, experience description and quick contact methods.</li>
+                      <li>Simple navigation by sections like Home, Rooms, Gallery, Location and Contact.</li>
+                      <li>Visible calls-to-action for queries and direct reservations.</li>
                       <li>
-                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
                       </li>
                     </ul>
                   </div>
@@ -205,18 +206,19 @@ class Portfolio extends React.Component {
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">TicoTrekker — Aventuras en Costa Rica</h2>
+                  <h2 className="w-title">TicoTrekker — Adventures in Costa Rica</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Rutas, guías y experiencias para explorar Costa Rica</span>
+                    <span className="w-ctegory">Routes, guides & experiences to explore Costa Rica</span>
                     <br />
-                    <span>Proyecto Web (2025)</span>
+                    <span>Web Project (2025)</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li>Descubre rutas de senderismo, miradores y planes de fin de semana con fotos reales.</li>
-                      <li>Contenido pensado para el explorador: qué llevar, cómo llegar y qué esperar del recorrido.</li>
-                      <li>Navegación sencilla por secciones como Inicio, Rutas, Blog y Contacto.</li>
-                      <li>Llamados a la acción claros para inspirar y planear la próxima aventura.</li>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Discover hiking routes, viewpoints and weekend plans with real photos.</li>
+                      <li>Content designed for the explorer: what to bring, how to get there and what to expect from the tour.</li>
+                      <li>Simple navigation by sections like Home, Routes, Blog and Contact.</li>
+                      <li>Clear calls-to-action to inspire and plan the next adventure.</li>
                       <li>
-                        <a href="https://ticotrekker.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                        <a href="https://ticotrekker.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
                       </li>
                     </ul>
                   </div>
@@ -237,18 +239,19 @@ class Portfolio extends React.Component {
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Construcciones La Fortuna — Sitio Web</h2>
+                  <h2 className="w-title">Construcciones La Fortuna — Web Site</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Servicios de construcción y remodelación en La Fortuna</span>
+                    <span className="w-ctegory">Construction & remodeling services in La Fortuna</span>
                     <br />
-                    <span>Sitio web (2025)</span>
+                    <span>Web Site (2025)</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li>Presentación de servicios clave: construcción, remodelación y mantenimiento.</li>
-                      <li>Portafolio visual de trabajos realizados para generar confianza.</li>
-                      <li>Cobertura en La Fortuna y zonas aledañas con contacto directo para cotizaciones.</li>
-                      <li>Llamados a la acción visibles para solicitar presupuesto y agendar visita.</li>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Presentation of key services: construction, remodeling and maintenance.</li>
+                      <li>Visual portfolio of completed work to build trust.</li>
+                      <li>Coverage in La Fortuna and surrounding areas with direct contact for quotes.</li>
+                      <li>Visible calls-to-action to request budget and schedule a visit.</li>
                       <li>
-                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
                       </li>
                     </ul>
                   </div>
