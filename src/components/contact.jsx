@@ -128,12 +128,12 @@ class Contact extends React.Component {
                           </li>
                           <li>
                             <a
-                              href="https://github.com/jeudym777"
+                              href="https://www.instagram.com/yeoolabs/"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
                               <span className="ico-circle">
-                                <i className="ion-social-github"></i>
+                                <i className="ion-social-instagram"></i>
                               </span>
                             </a>
                           </li>
