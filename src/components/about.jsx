@@ -8,12 +8,7 @@ class About extends React.Component {
         {
           id: "first-p-about",
           content:
-            "YEUDI MARTÍNEZ SÁNCHEZ\nSan Carlos, Alajuela, Ciudad Quesada.\nTel: 87025190 | Email: jeudym777@gmail.com\n\nApasionado por la creación de software en diferentes áreas. Creo que el trabajo en equipo es esencial para el crecimiento individual, nos permite escuchar y ampliar perspectivas para resolver cualquier problema."
-        },
-        {
-          id: "second-p-about",
-          content:
-            "EDUCACIÓN: Instituto Tecnológico de Costa Rica (TEC) | Ingeniería en Computación - 2025\n\nSOFT SKILLS: Pensamiento crítico, trabajo en equipo, adaptabilidad, creatividad, resolución de problemas.\nIDIOMAS: Inglés intermedio, español nativo."
+            "Computer Engineer specialized in AI, Computer Vision and applied Machine Learning, with experience building real-time systems, LLM-based tools and production-ready web platforms. Focused on automation, data-driven solutions and scalable software for real-world problems."
         }
       ],
       tech_skills: [
