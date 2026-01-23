@@ -314,9 +314,9 @@ class Portfolio extends React.Component {
                       Ver demo en YouTube
                     </a>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> Python DL, Facenet, Yolov8, training antispoofing and weapon detect models, opensource datasets</li>
-                      <li>Real-time computer vision pipelines</li>
-                      <li>Client: ITCR y Poder Judicial De Costa Rica</li>
+                      <li><b>Description:</b> Designed and implemented real-time AI security modules for anti-spoofing and weapon detection using YOLOv8 and FaceNet, deployed as proof-of-concept for academic and judicial institutions. Focus on low-latency inference and real-time pipelines.</li>
+                      <li><b>Stack:</b> Python DL, FaceNet, YOLOv8, Computer Vision, Real-time inference pipelines</li>
+                      <li><b>Client:</b> ITCR & Poder Judicial de Costa Rica</li>
                     </ul>
                   </div>
                 </div>
@@ -332,6 +332,55 @@ class Portfolio extends React.Component {
             </div>
             {/* Aquí puedes agregar nuevas imágenes para el proyecto AI si lo deseas */}
           </div>
+
+          {/* AI PRODUCTS & SYSTEMS */}
+          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Products & Systems</h4>
+          <div className="row">
+            <div className="col-12">
+              <div style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                padding: '25px',
+                borderRadius: '12px',
+                color: 'white',
+                marginBottom: '20px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+              }}>
+                <div className="row">
+                  <div className="col-md-4 mb-3">
+                    <div style={{ padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', height: '100%' }}>
+                      <h6 style={{ fontWeight: 'bold', marginBottom: '10px', color: '#fff' }}>
+                        🤖 Private LLM Systems
+                      </h6>
+                      <p style={{ fontSize: '0.9em', margin: 0, lineHeight: '1.4' }}>
+                        Private LLM-based systems (Ollama + Flask) for internal document analysis and domain-specific knowledge.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <div style={{ padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', height: '100%' }}>
+                      <h6 style={{ fontWeight: 'bold', marginBottom: '10px', color: '#fff' }}>
+                        👁️ Computer Vision Systems
+                      </h6>
+                      <p style={{ fontSize: '0.9em', margin: 0, lineHeight: '1.4' }}>
+                        AI-powered computer vision systems for security and operational monitoring.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <div style={{ padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', height: '100%' }}>
+                      <h6 style={{ fontWeight: 'bold', marginBottom: '10px', color: '#fff' }}>
+                        ⚡ Automation Tools
+                      </h6>
+                      <p style={{ fontSize: '0.9em', margin: 0, lineHeight: '1.4' }}>
+                        Custom automation tools for businesses using ML and LLMs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* VIDEOGAMES */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Videogames</h4>
           <div className="row">

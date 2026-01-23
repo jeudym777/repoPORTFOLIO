@@ -11,8 +11,45 @@ class About extends React.Component {
             "Computer Engineer specialized in AI, Computer Vision and applied Machine Learning, with experience building real-time systems, LLM-based tools and production-ready web platforms. Focused on automation, data-driven solutions and scalable software for real-world problems."
         }
       ],
-      tech_skills: [
-        "React", "Next.js", "Supabase", "TypeScript", "TailwindCSS", "Google SEO", "Java", "C#", "Python", "Android Studio", "Javascript", "SQL Server", "Firebase", "Unity", "C++", "Postgres SQL", "Azure", "Weaviate DB", "Cloudflare", "herramientas de desarrollo y diseño"
+      skill_categories: [
+        {
+          title: "🔹 AI / ML / DATA",
+          skills: [
+            "Python (ML / DL)",
+            "Computer Vision (YOLOv8, FaceNet, Anti-spoofing)",
+            "LLMs (Gemma, Ollama, RAG pipelines)",
+            "Weaviate DB",
+            "Real-time inference pipelines"
+          ]
+        },
+        {
+          title: "🔹 Backend / Web",
+          skills: [
+            "Flask / APIs",
+            "Supabase (Auth, Storage, RLS, PostgreSQL)",
+            "SQL Server / Postgres",
+            ".NET Framework",
+            "Azure Services"
+          ]
+        },
+        {
+          title: "🔹 Frontend",
+          skills: [
+            "React / Next.js",
+            "TypeScript / JavaScript",
+            "TailwindCSS",
+            "HTML / CSS"
+          ]
+        },
+        {
+          title: "🔹 Game / 3D / VR",
+          skills: [
+            "Unity 3D (PC / Mobile / VR)",
+            "C#",
+            "Blender",
+            "XR / Quest 2"
+          ]
+        }
       ]
     };
   }
@@ -43,18 +80,34 @@ class About extends React.Component {
                       </div>
                     </div>
                     <div style={{ marginTop: 20 }}>
-                      <strong>SKILLS TÉCNICAS:</strong>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
-                        {this.state.tech_skills.map(skill => (
-                          <span key={skill} style={{
-                            background: '#f1f1f1',
-                            color: '#333',
-                            borderRadius: '16px',
-                            padding: '6px 14px',
-                            fontSize: '0.95em',
-                            fontWeight: 500,
-                            boxShadow: '0 1px 2px rgba(0,0,0,0.07)'
-                          }}>{skill}</span>
+                      <strong>TECHNICAL SKILLS:</strong>
+                      <div style={{ marginTop: '15px' }}>
+                        {this.state.skill_categories.map((category, categoryIndex) => (
+                          <div key={categoryIndex} style={{ marginBottom: '20px' }}>
+                            <h6 style={{ 
+                              fontWeight: 'bold', 
+                              marginBottom: '10px',
+                              color: '#0078ff'
+                            }}>
+                              {category.title}
+                            </h6>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                              {category.skills.map((skill, skillIndex) => (
+                                <span key={skillIndex} style={{
+                                  background: '#f8f9fa',
+                                  color: '#495057',
+                                  border: '1px solid #dee2e6',
+                                  borderRadius: '12px',
+                                  padding: '5px 12px',
+                                  fontSize: '0.9em',
+                                  fontWeight: 500,
+                                  boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                                }}>
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>
