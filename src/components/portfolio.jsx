@@ -338,7 +338,7 @@ class Portfolio extends React.Component {
           <div className="row">
             <div className="col-12">
               <div style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #2980b9 0%, #3498db 100%)',
                 padding: '25px',
                 borderRadius: '12px',
                 color: 'white',
