@@ -1,4 +1,6 @@
 import React from "react";
+import Carousel from "./carousel";
+import AllservicesCarousel from "../utils/allservicesCarousel";
 
 // Video promocional
 import promoVideo from "../videos/CLIP_PROMORUFFTUFF_original.mp4";
@@ -35,6 +37,14 @@ import stvr9 from "../images/SKULLTROOPVR/SKTVR_9.png";
 import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
 
 class Portfolio extends React.Component {
+  constructor() {
+    super();
+    const loadedImages = AllservicesCarousel.loadImages();
+    this.state = {
+      allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5)
+    };
+  }
+
   render() {
     return (
       <section id="work" className="portfolio-mf sect-pt4 route">
@@ -338,7 +348,7 @@ class Portfolio extends React.Component {
           <div className="row">
             <div className="col-12">
               <div style={{
-                background: 'linear-gradient(135deg, #2980b9 0%, #3498db 100%)',
+                background: '#3498db',
                 padding: '25px',
                 borderRadius: '12px',
                 color: 'white',
@@ -377,6 +387,14 @@ class Portfolio extends React.Component {
                     </div>
                   </div>
                 </div>
+              </div>
+              
+              {/* Carrusel de Imágenes */}
+              <div style={{ marginTop: '30px' }}>
+                <Carousel 
+                  images={this.state.allservicesImages} 
+                  title="Custom services"
+                />
               </div>
             </div>
           </div>
