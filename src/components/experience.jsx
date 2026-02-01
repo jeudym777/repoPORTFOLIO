@@ -7,16 +7,16 @@ class Experience extends React.Component {
       experiences: [
         {
           id: "exp-1",
-          title: "Web API REST Developer",
-          technologies: ["C#", ".NET", "Dapper", "T-SQL"],
-          description: "Development of RESTful APIs using C# and .NET framework. Data access implementation with Dapper and optimized T-SQL queries.",
+          title: "Backend Developer — RESTful APIs",
+          technologies: ["C#", ".NET", "Dapper", "T-SQL", "SQL Server"],
+          description: "Architected and deployed high-performance REST APIs handling complex business logic. Implemented efficient data access layers with Dapper and optimized SQL queries, reducing response times and improving system reliability.",
           type: "Backend"
         },
         {
           id: "exp-2",
-          title: "Frontend Developer",
-          technologies: ["Angular"],
-          description: "Development of responsive and dynamic web interfaces with Angular. Experience in components, services and state management.",
+          title: "Frontend Developer — Enterprise Applications",
+          technologies: ["Angular", "TypeScript", "RxJS"],
+          description: "Built responsive, component-based enterprise interfaces with Angular. Delivered intuitive UX with state management patterns, ensuring maintainability and scalability across large codebases.",
           type: "Frontend"
         }
       ]

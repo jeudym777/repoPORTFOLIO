@@ -28,11 +28,11 @@ class Intro extends React.Component {
                 }}
               />
               <div>
-                <h1 className="intro-title mb-4">Hello, I am Yeudi Martinez Computer Engineer</h1>
+                <h1 className="intro-title mb-4">I'm Yeudi Martinez — Computer Engineer & AI Developer</h1>
                 <p className="intro-subtitle">
                   <span className="text-slider-items"></span>
                   <strong className="text-slider">
-                    Web Developer | AI Developer | Videogame Developer
+                    Building AI Solutions | Production-Ready Web Apps | Immersive VR Experiences
                   </strong>
                 </p>
                 <p className="pt-3">
@@ -41,7 +41,7 @@ class Intro extends React.Component {
                     href="#work"
                     role="button"
                   >
-                    View My Work
+                    See My Work
                   </a>
                 </p>
               </div>
