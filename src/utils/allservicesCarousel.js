@@ -1,5 +1,3 @@
-import React from "react";
-
 // Componente que genera imágenes placeholder dinámicamente
 const AllservicesCarousel = {
   // Carga imágenes dinámicamente de la carpeta Allservices
