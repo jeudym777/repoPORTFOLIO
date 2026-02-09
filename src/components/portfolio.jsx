@@ -66,7 +66,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    const { showAllWebProjects, showAllAIProjects, showAllGames } = this.state;
+    const { showAllWebProjects } = this.state;
     return (
       <section id="work" className="portfolio-mf sect-pt4 route">
         <div className="container">
