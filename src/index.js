@@ -16,18 +16,20 @@ import 'popper.js/dist/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './libs/easing.js';
 import 'lightbox2/dist/js/lightbox.min.js';
+import './libs/lightbox-touch.js';
 
 import * as serviceWorker from './serviceWorker';
 
 //import components
 import Navbar from './components/navbar.jsx';
 import Intro from './components/intro.jsx';
+import Services from './components/services.jsx';
 import About from './components/about.jsx';
 import Experience from './components/experience.jsx';
 import Portfolio from './components/portfolio.jsx';
 import Contact from './components/contact.jsx';
-import BackToTop from './components/back-top.jsx';
 import Preloader from './components/preloader';
+import WhatsAppButton from './components/whatsapp-button.jsx';
 
 
 
@@ -35,11 +37,12 @@ ReactDOM.render(
     <React.Fragment>
         <Navbar />
         <Intro />
+        <Services />
         <Portfolio />
         <Experience />
         <About />
         <Contact />
-        <BackToTop />
+        <WhatsAppButton />
         <Preloader />
     </React.Fragment>,
 document.getElementById('root'));

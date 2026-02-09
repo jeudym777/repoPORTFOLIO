@@ -46,11 +46,27 @@ class Portfolio extends React.Component {
     super();
     const loadedImages = AllservicesCarousel.loadImages();
     this.state = {
-      allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5)
+      allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5),
+      showAllWebProjects: false,
+      showAllAIProjects: false,
+      showAllGames: false
     };
   }
 
+  toggleWebProjects = () => {
+    this.setState(prev => ({ showAllWebProjects: !prev.showAllWebProjects }));
+  }
+
+  toggleAIProjects = () => {
+    this.setState(prev => ({ showAllAIProjects: !prev.showAllAIProjects }));
+  }
+
+  toggleGames = () => {
+    this.setState(prev => ({ showAllGames: !prev.showAllGames }));
+  }
+
   render() {
+    const { showAllWebProjects, showAllAIProjects, showAllGames } = this.state;
     return (
       <section id="work" className="portfolio-mf sect-pt4 route">
         <div className="container">
@@ -214,6 +230,30 @@ class Portfolio extends React.Component {
                 <a href={require("../images/PIZZERIA/agoogleindexacion.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+          </div>
+
+          {/* View More Web Projects Button */}
+          {!showAllWebProjects && (
+            <div className="text-center mb-4">
+              <button 
+                onClick={this.toggleWebProjects}
+                className="btn btn-outline-primary"
+                style={{
+                  padding: '12px 30px',
+                  fontSize: '1rem',
+                  borderRadius: '8px',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                View More Web Projects ({4} more)
+              </button>
+            </div>
+          )}
+
+          {/* Additional Web Projects - Collapsible */}
+          {showAllWebProjects && (
+            <>
+            <div className="row">
             {/* Hotel Campo Arenal — Sitio Oficial */}
             <div className="col-md-4">
               <div className="work-box">
@@ -431,6 +471,23 @@ class Portfolio extends React.Component {
               </div>
             </div>
           </div>
+
+          {/* View Less Web Projects Button */}
+          <div className="text-center mb-4">
+            <button 
+              onClick={this.toggleWebProjects}
+              className="btn btn-outline-secondary"
+              style={{
+                padding: '10px 25px',
+                fontSize: '0.95rem',
+                borderRadius: '8px'
+              }}
+            >
+              View Less
+            </button>
+          </div>
+          </>
+          )}
           {/* AI PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
           <div className="row">

@@ -117,17 +117,6 @@ class Contact extends React.Component {
                         <ul>
                           <li>
                             <a
-                              href="https://codepen.io/yeudi"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <span className="ico-circle">
-                                <i className="ion-social-codepen"></i>
-                              </span>
-                            </a>
-                          </li>
-                          <li>
-                            <a
                               href="https://www.instagram.com/yeoolabs/"
                               target="_blank"
                               rel="noopener noreferrer"
