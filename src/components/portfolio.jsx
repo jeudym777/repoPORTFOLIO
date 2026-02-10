@@ -141,93 +141,99 @@ class Portfolio extends React.Component {
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
           <div className="row">
-            {/* Lawyer Olivia Oca — Legal Services */}
+            {/* Hotel Campo Arenal — Sitio Oficial */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
-                    <img src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
+                  <a href={require("../images/HotelCampoArenal/hcArenal.png")} data-lightbox="gallery-hotel-campo-arenal">
+                    <img src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
+                  <h2 className="w-title">Hotel Campo Arenal — Official Site</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
+                    <span className="w-ctegory">Tourism in La Fortuna, reservations & direct contact</span>
                     <br />
-                    <span>Landing Page (2025)</span>
+                    <span>Web Site</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
-                      <li><b>Client:</b> Lic. Olivia Oca Varela</li>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Clear hotel presentation and its proposal to enjoy La Fortuna, Costa Rica.</li>
+                      <li>Guest-oriented content: photos of the place, experience description and quick contact methods.</li>
+                      <li>Simple navigation by sections like Home, Rooms, Gallery, Location and Contact.</li>
+                      <li>Visible calls-to-action for queries and direct reservations.</li>
                       <li>
-                        <a href="https://abogadamariaoliviaocavarela.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
+                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <a href={require("../images/LAWYER/lawyerpage_1.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/LAWYER/lawyerpage_4.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/ahcArenal000.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal3.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal4.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/hcArenal5.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/HotelCampoArenal/googleSearch00.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
-            {/* Medical Patient & Clinical Records (Closed System) */}
+            {/* TicoTrekker — Aventuras en Costa Rica */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
-                    <img src={require("../images/DOCTORPAGE/doctropage_3.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
+                  <a href={require("../images/TICOTREKKER/ticotreekerimages.png")} data-lightbox="gallery-ticotrekker">
+                    <img src={require("../images/TICOTREKKER/ticotreekerimages.png")} alt="TicoTrekker — Aventuras en Costa Rica" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                    <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
-                      <br />
-                      <span>2025</span>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li><b>Stack:</b> React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</li>
-                        <li><b>Client:</b> Dra Daniela Oca Varela</li>
-                      </ul>
-                    </div>
+                  <h2 className="w-title">TicoTrekker — Adventures in Costa Rica</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Routes, guides & experiences to explore Costa Rica</span>
+                    <br />
+                    <span>Web Project</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Discover hiking routes, viewpoints and weekend plans with real photos.</li>
+                      <li>Content designed for the explorer: what to bring, how to get there and what to expect from the tour.</li>
+                      <li>Simple navigation by sections like Home, Routes, Blog and Contact.</li>
+                      <li>Clear calls-to-action to inspire and plan the next adventure.</li>
+                      <li>
+                        <a href="https://ticotrekker.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
+                      </li>
+                    </ul>
                   </div>
-                {/* cierre de work-content, no debe haber </a> aquí */}
-                <a href={require("../images/DOCTORPAGE/doctropage_1.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_2.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_4.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_5.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_6.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_7.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                </div>
+                <a href={require("../images/TICOTREKKER/ticotreekerimages4.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/TICOTREKKER/ticotreekerimages5.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/TICOTREKKER/ticotreekerimages6.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/TICOTREKKER/ticotreekerimages7.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
-            {/* Pizzería Rinconcito La Fortuna — Landing Page */}
+            {/* Construcciones La Fortuna — Sitio Web */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
-                    <img src={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
+                  <a href={require("../images/contructoraAPP/contru1.png")} data-lightbox="gallery-construcciones-lafortuna">
+                    <img src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                    <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
-                      <br />
-                      <span>Landing Page (2025)</span>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
-                        <li><b>Rol:</b> Diseño UI, desarrollo front-end, copy básico y SEO on-page.</li>
-                        <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
-                        <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
-                        <li>
-                          <a href="https://pizzeria-rinconcito-lafortuna.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
-                        </li>
-                      </ul>
-                    </div>
+                  <h2 className="w-title">Construcciones La Fortuna — Web Site</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Construction & remodeling services in La Fortuna</span>
+                    <br />
+                    <span>Web Site</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li>Presentation of key services: construction, remodeling and maintenance.</li>
+                      <li>Visual portfolio of completed work to build trust.</li>
+                      <li>Coverage in La Fortuna and surrounding areas with direct contact for quotes.</li>
+                      <li>Visible calls-to-action to request budget and schedule a visit.</li>
+                      <li>
+                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
+                      </li>
+                    </ul>
                   </div>
-                {/* cierre de work-content, no debe haber </a> aquí */}
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_3.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_4.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_5.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_6.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/agoogleindexacion.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                </div>
+                <a href={require("../images/contructoraAPP/constru2.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
           </div>
@@ -254,102 +260,89 @@ class Portfolio extends React.Component {
           {showAllWebProjects && (
             <>
             <div className="row">
-            {/* Hotel Campo Arenal — Sitio Oficial */}
+            {/* Lawyer Olivia Oca — Legal Services */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/HotelCampoArenal/hcArenal.png")} data-lightbox="gallery-hotel-campo-arenal">
-                    <img src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
+                  <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
+                    <img src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Hotel Campo Arenal — Official Site</h2>
+                  <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Tourism in La Fortuna, reservations & direct contact</span>
+                    <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
                     <br />
-                    <span>Web Site (2025)</span>
+                    <span>Landing Page</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
-                      <li>Clear hotel presentation and its proposal to enjoy La Fortuna, Costa Rica.</li>
-                      <li>Guest-oriented content: photos of the place, experience description and quick contact methods.</li>
-                      <li>Simple navigation by sections like Home, Rooms, Gallery, Location and Contact.</li>
-                      <li>Visible calls-to-action for queries and direct reservations.</li>
+                      <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
+                      <li><b>Client:</b> Lic. Olivia Oca Varela</li>
                       <li>
-                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
+                        <a href="https://abogadamariaoliviaocavarela.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                {/* Imágenes adicionales para el lightbox */}
-                <a href={require("../images/HotelCampoArenal/ahcArenal000.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal3.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal4.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal5.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/googleSearch00.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/LAWYER/lawyerpage_1.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/LAWYER/lawyerpage_4.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
-            {/* TicoTrekker — Aventuras en Costa Rica */}
+            {/* Medical Patient & Clinical Records (Closed System) */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/TICOTREKKER/ticotreekerimages.png")} data-lightbox="gallery-ticotrekker">
-                    <img src={require("../images/TICOTREKKER/ticotreekerimages.png")} alt="TicoTrekker — Aventuras en Costa Rica" className="img-fluid" />
+                  <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
+                    <img src={require("../images/DOCTORPAGE/doctropage_3.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">TicoTrekker — Adventures in Costa Rica</h2>
+                  <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Routes, guides & experiences to explore Costa Rica</span>
-                    <br />
-                    <span>Web Project (2025)</span>
+                    <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
-                      <li>Discover hiking routes, viewpoints and weekend plans with real photos.</li>
-                      <li>Content designed for the explorer: what to bring, how to get there and what to expect from the tour.</li>
-                      <li>Simple navigation by sections like Home, Routes, Blog and Contact.</li>
-                      <li>Clear calls-to-action to inspire and plan the next adventure.</li>
-                      <li>
-                        <a href="https://ticotrekker.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
-                      </li>
+                      <li><b>Stack:</b> React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</li>
+                      <li><b>Client:</b> Dra Daniela Oca Varela</li>
                     </ul>
                   </div>
                 </div>
-                {/* Imágenes adicionales para el lightbox */}
-                <a href={require("../images/TICOTREKKER/ticotreekerimages4.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages5.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages6.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages7.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_1.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_2.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_4.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_5.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_6.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/DOCTORPAGE/doctropage_7.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
-            {/* Construcciones La Fortuna — Sitio Web */}
+            {/* Pizzería Rinconcito La Fortuna — Landing Page */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/contructoraAPP/contru1.png")} data-lightbox="gallery-construcciones-lafortuna">
-                    <img src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
+                  <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
+                    <img src={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                  <h2 className="w-title">Construcciones La Fortuna — Web Site</h2>
+                  <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
                   <div className="w-more">
-                    <span className="w-ctegory">Construction & remodeling services in La Fortuna</span>
+                    <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
                     <br />
-                    <span>Web Site (2025)</span>
+                    <span>Landing Page</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
-                      <li>Presentation of key services: construction, remodeling and maintenance.</li>
-                      <li>Visual portfolio of completed work to build trust.</li>
-                      <li>Coverage in La Fortuna and surrounding areas with direct contact for quotes.</li>
-                      <li>Visible calls-to-action to request budget and schedule a visit.</li>
+                      <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
+                      <li><b>Rol:</b> Diseño UI, desarrollo front-end, copy básico y SEO on-page.</li>
+                      <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
+                      <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
                       <li>
-                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
+                        <a href="https://pizzeria-rinconcito-lafortuna.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                {/* Imágenes adicionales para el lightbox */}
-                <a href={require("../images/contructoraAPP/constru2.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_3.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_4.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_5.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_6.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/PIZZERIA/agoogleindexacion.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
             {/* Green Eco Park — Atracciones y Naturaleza */}
@@ -365,7 +358,7 @@ class Portfolio extends React.Component {
                   <div className="w-more">
                     <span className="w-ctegory">Parque ecológico y actividades al aire libre en La Fortuna</span>
                     <br />
-                    <span>Sitio web (2025)</span>
+                    <span>Sitio web</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li>Experiencia familiar en medio de la naturaleza: senderos, miradores y diversión al aire libre.</li>
                       <li>Galería con fotos reales del parque para conocer el recorrido antes de visitar.</li>
@@ -377,7 +370,6 @@ class Portfolio extends React.Component {
                     </ul>
                   </div>
                 </div>
-                {/* Imágenes adicionales para el lightbox */}
                 <a href={require("../images/GREENECOPARK/greenecoparkinimage1.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/GREENECOPARK/greenecoparkimage2.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
               </div>
@@ -504,7 +496,7 @@ class Portfolio extends React.Component {
                   <div className="w-more">
                     <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
                     <br />
-                    <span>ITCR / Poder Judicial Costa Rica (2025)</span>
+                    <span>ITCR / Poder Judicial Costa Rica</span>
                     <a href="https://youtu.be/2W7S_aO_W9Q" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                       Ver demo en YouTube
