@@ -141,6 +141,35 @@ class Portfolio extends React.Component {
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
           <div className="row">
+            {/* Mundo Movil JR — Online Store */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} data-lightbox="gallery-mundomoviljr">
+                    <img src={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} alt="Mundo Movil JR — Online Store" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Online Store Mundo Movil JR</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Curicó, Santiago, Chile (Sep 2025 – Dec 2025)</span>
+                    <br />
+                    <span>Commercial Website & CRM</span>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Stack:</b> React, SQL Server (Auth/DB/Storage with RLS), React Hook Form, Javascript</li>
+                      <li><b>Hosting:</b> Cloudflare</li>
+                      <li><b>Role:</b> Full Stack Developer</li>
+                      <li>Commercial website with integrated CRM system for mobile phone store.</li>
+                      <li><b>Client:</b> Leonardo Jimenez</li>
+                    </ul>
+                  </div>
+                </div>
+                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_1.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_2.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE3.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE4.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
+              </div>
+            </div>
             {/* Hotel Campo Arenal — Sitio Oficial */}
             <div className="col-md-4">
               <div className="work-box">
