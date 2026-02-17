@@ -138,6 +138,162 @@ class Portfolio extends React.Component {
           </div>
 
           {/* FEATURED VIDEO */}
+          {/* AI PROJECTS */}
+          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
+          <div className="row">
+            {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
+                    <img src={require("../images/IASECURITY/securityIA_1.png")} alt="Security AI" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title" style={{ fontSize: '1.4rem', fontWeight: '800' }}><b>MVP Poder Judicial Costa Rica 2025</b></h2>
+                  <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>Security AI Modules — Anti-spoofing & Weapon Detection</p>
+                  <div className="w-more">
+                    <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
+                    <br />
+                    <span>ITCR / Poder Judicial Costa Rica</span>
+                    <a href="https://youtu.be/2W7S_aO_W9Q" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                      Ver video completo en YouTube
+                    </a>
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
+                      <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
+                      <li><b>Client:</b> ITCR & Poder Judicial de Costa Rica</li>
+                    </ul>
+                  </div>
+                </div>
+                <a href={require("../images/IASECURITY/securityIA_2.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_3.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_4.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_5.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_6.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_7.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_8.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/securityIA_9.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/mak21.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/mak22.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                <a href={require("../images/IASECURITY/Skull.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                {/* AI Security Demos */}
+                <div style={{ marginTop: '15px' }}>
+                  <p style={{ fontWeight: 'bold', marginBottom: '15px', fontSize: '0.95em', color: '#4fc3f7' }}>AI Security Demos:</p>
+                  <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                    <div style={{ flex: '1', minWidth: '200px' }}>
+                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Early MVP stage — Blade weapon detection prototype</p>
+                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
+                        <source src={require("../images/IASECURITY/cuchilloDeteect.mp4")} type="video/mp4" />
+                      </video>
+                    </div>
+                    <div style={{ flex: '1', minWidth: '200px' }}>
+                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Early stage — Mask-based spoofing detection model</p>
+                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
+                        <source src={require("../images/IASECURITY/maskDetectionVideo.mp4")} type="video/mp4" />
+                      </video>
+                    </div>
+                    <div style={{ flex: '1', minWidth: '200px' }}>
+                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Face impersonation attack — Training data for anti-spoofing model</p>
+                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
+                        <source src={require("../images/IASECURITY/Real.mp4")} type="video/mp4" />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* AI CAPABILITIES SHOWCASE */}
+            <div className="col-md-8">
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
+                padding: '30px',
+                borderRadius: '16px',
+                height: '100%',
+                border: '1px solid rgba(79, 195, 247, 0.3)',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+              }}>
+                <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
+                  Custom AI Detection Systems
+                </h5>
+                <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
+                  I develop <b style={{color: '#fff'}}>tailor-made computer vision and AI detection modules</b> for private enterprises. 
+                  From real-time surveillance to intelligent inventory tracking — I build systems that see, analyze, and act.
+                </p>
+                
+                <div className="row">
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Security & Access</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Facial recognition, anti-spoofing, weapon detection, intruder alerts</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Smart Inventory</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Object counting, SKU tracking, shelf monitoring, stock alerts</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Person Identification</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Employee tracking, VIP recognition, attendance systems, behavior analysis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Geolocation & Tracking</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Vehicle tracking, zone monitoring, heat maps, movement patterns</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Industrial QA</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Defect detection, quality control, assembly verification, anomaly alerts</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                      <div>
+                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Vehicle & Plate Reading</h6>
+                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>License plate recognition, parking management, traffic analysis</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{
+                  marginTop: '20px',
+                  padding: '15px 20px',
+                  background: 'rgba(79, 195, 247, 0.1)',
+                  borderRadius: '10px',
+                  borderLeft: '4px solid #4fc3f7'
+                }}>
+                  <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
+                    <b style={{color: '#4fc3f7'}}>Need a custom solution?</b> I design and deploy AI systems tailored to your specific business requirements — from prototype to production-ready deployment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
           <div className="row">
@@ -509,133 +665,6 @@ class Portfolio extends React.Component {
           </div>
           </>
           )}
-          {/* AI PROJECTS */}
-          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
-          <div className="row">
-            {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
-                    <img src={require("../images/IASECURITY/securityIA_1.png")} alt="Security AI" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                  <h2 className="w-title">Security AI Modules — Anti-spoofing & Weapon Detection (PoC)</h2>
-                  <div className="w-more">
-                    <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
-                    <br />
-                    <span>ITCR / Poder Judicial Costa Rica</span>
-                    <a href="https://youtu.be/2W7S_aO_W9Q" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                      Ver demo en YouTube
-                    </a>
-                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
-                      <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
-                      <li><b>Client:</b> ITCR & Poder Judicial de Costa Rica</li>
-                    </ul>
-                  </div>
-                </div>
-                <a href={require("../images/IASECURITY/securityIA_2.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_3.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_4.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_5.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_6.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_7.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_8.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_9.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-              </div>
-            </div>
-            {/* AI CAPABILITIES SHOWCASE */}
-            <div className="col-md-8">
-              <div style={{
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
-                padding: '30px',
-                borderRadius: '16px',
-                height: '100%',
-                border: '1px solid rgba(79, 195, 247, 0.3)',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
-              }}>
-                <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
-                  Custom AI Detection Systems
-                </h5>
-                <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
-                  I develop <b style={{color: '#fff'}}>tailor-made computer vision and AI detection modules</b> for private enterprises. 
-                  From real-time surveillance to intelligent inventory tracking — I build systems that see, analyze, and act.
-                </p>
-                
-                <div className="row">
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Security & Access</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Facial recognition, anti-spoofing, weapon detection, intruder alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Smart Inventory</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Object counting, SKU tracking, shelf monitoring, stock alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Person Identification</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Employee tracking, VIP recognition, attendance systems, behavior analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Geolocation & Tracking</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Vehicle tracking, zone monitoring, heat maps, movement patterns</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Industrial QA</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Defect detection, quality control, assembly verification, anomaly alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Vehicle & Plate Reading</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>License plate recognition, parking management, traffic analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{
-                  marginTop: '20px',
-                  padding: '15px 20px',
-                  background: 'rgba(79, 195, 247, 0.1)',
-                  borderRadius: '10px',
-                  borderLeft: '4px solid #4fc3f7'
-                }}>
-                  <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
-                    <b style={{color: '#4fc3f7'}}>Need a custom solution?</b> I design and deploy AI systems tailored to your specific business requirements — from prototype to production-ready deployment.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* PRODUCTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold', color: '#fff'}}>Products</h4>

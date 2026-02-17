@@ -1,4 +1,4 @@
-# 🎨 Carrusel Automático - AI Products & Systems
+const phoneNumber = "50688888888"; // Pon tu número real aquí# 🎨 Carrusel Automático - AI Products & Systems
 
 He implementado un carrusel automático que se desplaza de izquierda a derecha en la sección "AI Products & Systems" de tu portafolio.
 
