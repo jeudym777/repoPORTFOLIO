@@ -9,6 +9,8 @@ import promoVideo from "../videos/CLIP_PROMORUFFTUFF_original.mp4";
 import logoTec from "../images/logos/logotec.png";
 import logoPoderJudicial from "../images/logos/poderjudicial-Photoroom.png";
 import logoRuffTuff from "../images/logos/rufftufflogo-Photoroom.png";
+import logoLD from "../images/logos/LDlogo-Photoroom.png";
+import logoMarybbq from "../images/logos/marybbqLOGO-Photoroom.png";
 
 // Imágenes de videojuegos
 import mm1 from "../images/MISIONMONEY/MISIONMONEYVR_1.png";
@@ -47,26 +49,32 @@ class Portfolio extends React.Component {
     const loadedImages = AllservicesCarousel.loadImages();
     this.state = {
       allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5),
-      showAllWebProjects: false,
-      showAllAIProjects: false,
-      showAllGames: false
+      showAIProjects: false,
+      showWebProjects: false,
+      showVideogames: false,
+      showAllWebProjects: false, // Added missing state variable
     };
   }
 
-  toggleWebProjects = () => {
-    this.setState(prev => ({ showAllWebProjects: !prev.showAllWebProjects }));
-  }
-
   toggleAIProjects = () => {
-    this.setState(prev => ({ showAllAIProjects: !prev.showAllAIProjects }));
-  }
+    this.setState((prevState) => ({ showAIProjects: !prevState.showAIProjects }));
+  };
+
+  toggleWebProjects = () => {
+    this.setState((prevState) => ({ showWebProjects: !prevState.showWebProjects }));
+  };
 
   toggleGames = () => {
-    this.setState(prev => ({ showAllGames: !prev.showAllGames }));
-  }
+    this.setState((prevState) => ({ showVideogames: !prevState.showVideogames }));
+  };
+
+  toggleAllWebProjects = () => {
+    this.setState((prevState) => ({ showAllWebProjects: !prevState.showAllWebProjects }));
+  };
 
   render() {
-    const { showAllWebProjects } = this.state;
+    const { showAIProjects, showWebProjects, showVideogames, showAllWebProjects } = this.state;
+
     return (
       <section id="work" className="portfolio-mf sect-pt4 route">
         <div className="container">
@@ -83,39 +91,7 @@ class Portfolio extends React.Component {
             </div>
           </div>
 
-          {/* METRICS SECTION */}
-          <div className="row mb-5">
-            <div className="col-12">
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                gap: '40px',
-                padding: '40px 20px',
-                background: 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,58,95,0.9) 100%)',
-                borderRadius: '16px',
-                border: '1px solid rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(10px)'
-              }}>
-                <div style={{textAlign: 'center'}}>
-                  <div style={{fontSize: '3rem', fontWeight: 'bold', color: '#4fc3f7', lineHeight: 1}}>7+</div>
-                  <div style={{color: '#94a3b8', fontSize: '0.95rem', marginTop: '8px'}}>Websites Deployed</div>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                  <div style={{fontSize: '3rem', fontWeight: 'bold', color: '#4fc3f7', lineHeight: 1}}>3+</div>
-                  <div style={{color: '#94a3b8', fontSize: '0.95rem', marginTop: '8px'}}>AI Systems in Production</div>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                  <div style={{fontSize: '3rem', fontWeight: 'bold', color: '#10b981', lineHeight: 1}}>90%+</div>
-                  <div style={{color: '#94a3b8', fontSize: '0.95rem', marginTop: '8px'}}>Detection Accuracy</div>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                  <div style={{fontSize: '3rem', fontWeight: 'bold', color: '#10b981', lineHeight: 1}}>&lt;100ms</div>
-                  <div style={{color: '#94a3b8', fontSize: '0.95rem', marginTop: '8px'}}>Inference Latency</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Metrics and service cards removed per request */}
 
           {/* TRUSTED BY SECTION */}
           <div className="row mb-5">
@@ -130,9 +106,11 @@ class Portfolio extends React.Component {
                 flexWrap: 'wrap',
                 gap: '50px'
               }}>
-                <img src={logoPoderJudicial} alt="Poder Judicial Costa Rica" style={{height: '55px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
+                <img src={logoPoderJudicial} alt="Poder Judicial Costa Rica" style={{height: '70px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
                 <img src={logoTec} alt="TEC Costa Rica" style={{height: '55px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
-                <img src={logoRuffTuff} alt="Ruff & Tuff TV" style={{height: '55px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
+                <img src={logoRuffTuff} alt="Ruff & Tuff TV" style={{height: '70px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
+                <img src={logoLD} alt="LD" style={{height: '70px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
+                <img src={logoMarybbq} alt="Mary BBQ" style={{height: '70px', objectFit: 'contain', opacity: 0.9, filter: 'brightness(1.1)'}} />
               </div>
             </div>
           </div>
@@ -145,9 +123,16 @@ class Portfolio extends React.Component {
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/IASECURITY/securityIA_1.png")} data-lightbox="gallery-iasecurity">
-                    <img src={require("../images/IASECURITY/securityIA_1.png")} alt="Security AI" className="img-fluid" />
-                  </a>
+                  {/* Carrusel de imágenes de IASECURITY */}
+                  <Carousel
+                    images={[
+                      require("../images/IASECURITY/mak21.png"),
+                      require("../images/IASECURITY/mak22.png"),
+                      require("../images/IASECURITY/Skull.png"),
+                      require("../images/IASECURITY/portada.png")
+                    ]}
+                    title="AI Security Gallery"
+                  />
                 </div>
                 <div className="work-content">
                   <h2 className="w-title" style={{ fontSize: '1.4rem', fontWeight: '800' }}><b>MVP Poder Judicial Costa Rica 2025</b></h2>
@@ -163,19 +148,18 @@ class Portfolio extends React.Component {
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
                       <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
-                      <li><b>Client:</b> ITCR & Poder Judicial de Costa Rica</li>
+                      <li style={{display:'flex', alignItems:'center', gap:'12px', marginTop:'8px'}}>
+                        <b style={{marginRight:'10px'}}>Client:</b>
+                        <div style={{display:'flex', alignItems:'center', gap:'18px'}}>
+                          <img src={require('../images/logos/logotec.png')} alt="Logo TEC" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
+                          <img src={require('../images/logos/poderjudicial-Photoroom.png')} alt="Logo Poder Judicial" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
+                        </div>
+                      </li>
                     </ul>
                   </div>
                 </div>
-                <a href={require("../images/IASECURITY/securityIA_2.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_3.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_4.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_5.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_6.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_7.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_8.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/securityIA_9.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/mak21.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
+                {/* Imagen extra eliminada: securityIA_2.png */}
+                {/* Imágenes extra eliminadas: securityIA_2.png a securityIA_9.png */}
                 <a href={require("../images/IASECURITY/mak22.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/IASECURITY/Skull.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
                 {/* AI Security Demos */}
@@ -427,7 +411,7 @@ class Portfolio extends React.Component {
           {!showAllWebProjects && (
             <div className="text-center mb-4">
               <button 
-                onClick={this.toggleWebProjects}
+                onClick={this.toggleAllWebProjects}
                 className="btn btn-outline-primary"
                 style={{
                   padding: '12px 30px',
@@ -1096,7 +1080,7 @@ class Portfolio extends React.Component {
                       </div>
                       <div className="col-6 mb-3">
                         <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                           <div>
                             <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>VR Experiences</h6>
                             <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Immersive virtual reality for training, tours, or entertainment</p>

@@ -79,24 +79,7 @@ class Carousel extends React.Component {
     const { currentIndex } = this.state;
 
     if (!images || images.length === 0) {
-      return (
-        <div className="carousel-empty-state">
-          <div style={{
-            padding: '40px 20px',
-            textAlign: 'center',
-            background: '#f8f9fa',
-            borderRadius: '12px',
-            border: '2px dashed #ccc'
-          }}>
-            <p style={{ color: '#666', fontSize: '1em', marginBottom: '10px' }}>
-              📸 No hay imágenes disponibles
-            </p>
-            <p style={{ color: '#999', fontSize: '0.9em', margin: 0 }}>
-              Agrega archivos de imagen a la carpeta <code>src/images/Allservices</code>
-            </p>
-          </div>
-        </div>
-      );
+      return null;
     }
 
     return (

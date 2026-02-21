@@ -18,7 +18,8 @@ class About extends React.Component {
       ],
       skill_categories: [
         {
-          title: "🔹 AI / ML / DATA",
+          title: "AI / ML / DATA",
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0078ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg>,
           skills: [
             "Python (ML / DL)",
             "Computer Vision (YOLOv8, FaceNet, Anti-spoofing)",
@@ -28,18 +29,24 @@ class About extends React.Component {
           ]
         },
         {
-          title: "🔹 Backend / Web",
+          title: "Backend / Web",
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0078ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
           skills: [
+            "C#",
+            "Dapper",
+            "T-SQL",
+            "SQL Server",
             "Flask / APIs",
             "Supabase (Auth, Storage, RLS, PostgreSQL)",
-            "SQL Server / Postgres",
             ".NET Framework",
             "Azure Services"
           ]
         },
         {
-          title: "🔹 Frontend",
+          title: "Frontend",
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0078ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
           skills: [
+            "Angular",
             "React / Next.js",
             "TypeScript / JavaScript",
             "TailwindCSS",
@@ -47,7 +54,8 @@ class About extends React.Component {
           ]
         },
         {
-          title: "🔹 Game / 3D / VR",
+          title: "Game / 3D / VR",
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0078ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="10" y2="12"/><circle cx="17" cy="10" r="1"/><circle cx="17" cy="14" r="1"/></svg>,
           skills: [
             "Unity 3D (PC / Mobile / VR)",
             "C#",
@@ -92,8 +100,12 @@ class About extends React.Component {
                             <h6 style={{ 
                               fontWeight: 'bold', 
                               marginBottom: '10px',
-                              color: '#0078ff'
+                              color: '#0078ff',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '8px'
                             }}>
+                              {category.icon}
                               {category.title}
                             </h6>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
