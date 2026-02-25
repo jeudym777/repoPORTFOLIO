@@ -49,10 +49,8 @@ class Portfolio extends React.Component {
     const loadedImages = AllservicesCarousel.loadImages();
     this.state = {
       allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5),
-      showAIProjects: false,
-      showWebProjects: false,
-      showVideogames: false,
-      showAllWebProjects: false, // Added missing state variable
+      // toggle flags left here in case they are needed later; currently unused
+      showAllWebProjects: false,
     };
   }
 
@@ -73,7 +71,8 @@ class Portfolio extends React.Component {
   };
 
   render() {
-    const { showAIProjects, showWebProjects, showVideogames, showAllWebProjects } = this.state;
+    // state variables for toggles are initialized but not currently used in rendering
+    const { showAllWebProjects } = this.state;
 
     return (
       <section id="work" className="portfolio-mf sect-pt4 route">
