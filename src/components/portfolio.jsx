@@ -517,8 +517,8 @@ class Portfolio extends React.Component {
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/DOCTORPAGE/doctropage_3.png")} data-lightbox="gallery-doctorpage">
-                    <img src={require("../images/DOCTORPAGE/doctropage_3.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
+                  <a href={require("../images/DOCTORPAGE/medicalCRM.png")} data-lightbox="gallery-doctorpage">
+                    <img src={require("../images/DOCTORPAGE/medicalCRM.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -531,12 +531,6 @@ class Portfolio extends React.Component {
                     </ul>
                   </div>
                 </div>
-                <a href={require("../images/DOCTORPAGE/doctropage_1.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_2.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_4.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_5.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_6.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/DOCTORPAGE/doctropage_7.png")} data-lightbox="gallery-doctorpage" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
             {/* Pizzería Rinconcito La Fortuna — Landing Page */}
