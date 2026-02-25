@@ -149,7 +149,7 @@ class About extends React.Component {
                       </div>
                       <div style={{ marginTop: '20px' }}>
                         <div className="education-entry">
-                          <img src={require("../images/logos/logotec.png")} alt="TEC logo" />
+                          <img src="https://tecingles.com/wp-content/uploads/2020/07/fabtec.png" alt="TEC / Fabtec logo" />
                           <div className="edu-text">
                             <h6 style={{ fontWeight: 'bold', color: '#0078ff' }}>
                               INSTITUTO TECNOLÓGICO DE COSTA RICA
