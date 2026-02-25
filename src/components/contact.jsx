@@ -52,10 +52,14 @@ class Contact extends React.Component {
                           cursor: "pointer",
                           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                           transition: "transform 0.2s",
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px'
                         }}
                         onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
                         onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
                       >
+                        <img src="https://png.pngtree.com/element_our/sm/20180630/sm_5b37de3263964.jpg" alt="Instagram" style={{height:'20px',width:'20px'}} />
                         Instagram
                       </button>
                     </a>
