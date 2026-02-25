@@ -198,6 +198,19 @@ a:hover {
   color: #1e1e1e;
 }
 
+/* AI section background helper */
+.ai-bg {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .ai-bg {
+    background-position: top center;
+  }
+}
+
 .title-left:before {
   content: '';
   position: absolute;

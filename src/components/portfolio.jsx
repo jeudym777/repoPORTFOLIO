@@ -43,6 +43,10 @@ import stvr8 from "../images/SKULLTROOPVR/SKTVR_8.png";
 import stvr9 from "../images/SKULLTROOPVR/SKTVR_9.png";
 import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
 
+// load promotional background images from folder
+const promoImagesContext = require.context("../images/PromoImages", false, /\.(png|jpe?g|svg)$/);
+const promoImages = promoImagesContext.keys().map(promoImagesContext);
+
 class Portfolio extends React.Component {
   constructor() {
     super();
@@ -116,11 +120,19 @@ class Portfolio extends React.Component {
 
           {/* FEATURED VIDEO */}
           {/* AI PROJECTS */}
-          <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>AI Projects</h4>
-          <div className="row">
-            {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
-            <div className="col-md-4">
-              <div className="work-box">
+          {/* background container using first promo image */}
+          <div
+            className="ai-bg"
+            style={{
+              backgroundImage: promoImages.length > 0 ? `url(${promoImages[0]})` : undefined,
+              padding: '2rem 0'
+            }}
+          >
+            <h4 className="mt-5 mb-3" style={{fontWeight:'bold', color:'#fff'}}>AI Projects</h4>
+            <div className="row">
+              {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
+              <div className="col-md-4">
+                <div className="work-box">
                 <div className="work-img">
                   {/* Carrusel de imágenes de IASECURITY */}
                   <Carousel
@@ -276,6 +288,7 @@ class Portfolio extends React.Component {
               </div>
             </div>
           </div>
+          </div> {/* end ai-bg */}
 
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
