@@ -148,24 +148,30 @@ class About extends React.Component {
                         <h5 className="title-left">Education</h5>
                       </div>
                       <div style={{ marginTop: '20px' }}>
-                        <div style={{ marginBottom: '25px' }}>
-                          <h6 style={{ fontWeight: 'bold', color: '#0078ff', marginBottom: '5px' }}>
-                            INSTITUTO TECNOLÓGICO DE COSTA RICA
-                          </h6>
-                          <p style={{ margin: '5px 0', fontSize: '0.95em', color: '#333333' }}>
-                            Bachelor's Degree in Computer Engineering
-                          </p>
+                        <div className="education-entry">
+                          <img src={require("../images/logos/logotec.png")} alt="TEC logo" />
+                          <div className="edu-text">
+                            <h6 style={{ fontWeight: 'bold', color: '#0078ff' }}>
+                              INSTITUTO TECNOLÓGICO DE COSTA RICA
+                            </h6>
+                            <p style={{ fontSize: '0.95em', color: '#333333' }}>
+                              Bachelor's Degree in Computer Engineering
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h6 style={{ fontWeight: 'bold', color: '#0078ff', marginBottom: '5px' }}>
-                            MEDICAL IMAGE PROCESSING WITH DEEP LEARNING
-                          </h6>
-                          <p style={{ margin: '5px 0', fontSize: '0.95em', color: '#333333' }}>
-                            Specialized Certificate - December 2025
-                          </p>
-                          <p style={{ margin: '5px 0', fontSize: '0.85em', color: '#555555' }}>
-                            Computer Vision, Deep Learning & Medical Imaging Applications
-                          </p>
+                        <div className="education-entry">
+                          <img src="https://upload.wikimedia.org/wikipedia/en/c/cd/Myongji_University_logo.svg" alt="Myongji College logo" />
+                          <div className="edu-text">
+                            <h6 style={{ fontWeight: 'bold', color: '#0078ff' }}>
+                              MYONGJI COLLEGE
+                            </h6>
+                            <p style={{ fontSize: '0.95em', color: '#333333' }}>
+                              Specialized Certificate - December 2025
+                            </p>
+                            <p style={{ fontSize: '0.85em', color: '#555555' }}>
+                              Computer Vision, Deep Learning & Medical Imaging Applications
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>

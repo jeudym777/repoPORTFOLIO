@@ -45,7 +45,18 @@ import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
 
 // load promotional background images from folder
 const promoImagesContext = require.context("../images/PromoImages", false, /\.(png|jpe?g|svg)$/);
-const promoImages = promoImagesContext.keys().map(promoImagesContext);
+let promoImages = promoImagesContext.keys().map(promoImagesContext);
+// ensure promoimage_(8).png appears first if present
+const targetName = "promoimage_(8).png";
+const idx = promoImages.findIndex(img => img.includes(targetName));
+if (idx > 0) {
+  // rotate array
+  promoImages = promoImages.slice(idx).concat(promoImages.slice(0, idx));
+}
+
+// load videogame showcase images (Toledo game)
+const toledoContext = require.context("../images/toledogame", false, /\.(png|jpe?g|svg)$/);
+const toledoImages = toledoContext.keys().map(toledoContext);
 
 class Portfolio extends React.Component {
   constructor() {
@@ -124,10 +135,15 @@ class Portfolio extends React.Component {
           <div
             className="ai-bg"
             style={{
-              backgroundImage: promoImages.length > 0 ? `url(${promoImages[0]})` : undefined,
               padding: '2rem 0'
             }}
           >
+            {/* carousel showing promo images */}
+            {promoImages.length > 0 && (
+              <div className="promo-bg">
+                <Carousel images={promoImages} title="Promotional Background" />
+              </div>
+            )}
             <h4 className="mt-5 mb-3" style={{fontWeight:'bold', color:'#fff'}}>AI Projects</h4>
             <div className="row">
               {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
@@ -173,26 +189,55 @@ class Portfolio extends React.Component {
                 {/* Imágenes extra eliminadas: securityIA_2.png a securityIA_9.png */}
                 <a href={require("../images/IASECURITY/mak22.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
                 <a href={require("../images/IASECURITY/Skull.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                {/* AI Security Demos */}
-                <div style={{ marginTop: '15px' }}>
-                  <p style={{ fontWeight: 'bold', marginBottom: '15px', fontSize: '0.95em', color: '#4fc3f7' }}>AI Security Demos:</p>
-                  <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-                    <div style={{ flex: '1', minWidth: '200px' }}>
-                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Early MVP stage — Blade weapon detection prototype</p>
-                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
-                        <source src={require("../images/IASECURITY/cuchilloDeteect.mp4")} type="video/mp4" />
+                {/* AI Security Demos - unified blue section */}
+                <div className="ai-demos-full">
+                  <h5 style={{ color: '#4fc3f7', fontWeight: 'bold', marginBottom: '12px' }}>
+                    AI Security Demos
+                  </h5>
+                  <div className="video-grid">
+                    <div>
+                      <video
+                        poster={require("../images/IASECURITY/mak21.png")}
+                        controls
+                        muted
+                      >
+                        <source
+                          src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
+                          type="video/mp4"
+                        />
                       </video>
                     </div>
-                    <div style={{ flex: '1', minWidth: '200px' }}>
-                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Early stage — Mask-based spoofing detection model</p>
-                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
-                        <source src={require("../images/IASECURITY/maskDetectionVideo.mp4")} type="video/mp4" />
+                    <div>
+                      <video
+                        poster={require("../images/IASECURITY/mak22.png")}
+                        controls
+                        muted
+                      >
+                        <source
+                          src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
+                          type="video/mp4"
+                        />
                       </video>
                     </div>
-                    <div style={{ flex: '1', minWidth: '200px' }}>
-                      <p style={{ fontSize: '0.8em', color: '#94a3b8', marginBottom: '5px', fontWeight: 'bold' }}>Face impersonation attack — Training data for anti-spoofing model</p>
-                      <video width="100%" style={{ borderRadius: '8px', maxHeight: '180px' }} controls muted>
-                        <source src={require("../images/IASECURITY/Real.mp4")} type="video/mp4" />
+                    <div>
+                      <video
+                        poster={require("../images/IASECURITY/Skull.png")}
+                        controls
+                        muted
+                      >
+                        <source
+                          src={require("../images/IASECURITY/Real.mp4")}
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                    <div>
+                      <video
+                        poster={require("../images/IASECURITY/portada.png")}
+                        controls
+                        muted
+                      >
+                        <source src={promoVideo} type="video/mp4" />
                       </video>
                     </div>
                   </div>
@@ -783,6 +828,12 @@ class Portfolio extends React.Component {
 
           {/* VIDEOGAMES */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Videogames</h4>
+          {/* Toledo game carousel */}
+          {toledoImages.length > 0 && (
+            <div className="promo-bg">
+              <Carousel images={toledoImages} title="Toledo Game Gallery" />
+            </div>
+          )}
           
           {/* Featured Video */}
           <div className="row mb-4">
