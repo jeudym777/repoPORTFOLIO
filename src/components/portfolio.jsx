@@ -164,10 +164,7 @@ class Portfolio extends React.Component {
                     <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
                     <br />
                     <span>ITCR / Poder Judicial Costa Rica</span>
-                    <a href="https://youtu.be/2W7S_aO_W9Q" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                      Ver video completo en YouTube
-                    </a>
+                    {/* YouTube link removed from here (moved to AI Security Demos) */}
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
                       <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
@@ -190,12 +187,13 @@ class Portfolio extends React.Component {
                   <h5 style={{ color: '#4fc3f7', fontWeight: 'bold', marginBottom: '12px' }}>
                     AI Security Demos
                   </h5>
-                  <div className="video-grid">
-                    <div>
+                  <div className="video-grid" style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
+                    <div style={{width: '280px', flex: '0 0 280px'}}>
                       <video
                         poster={require("../images/IASECURITY/mak21.png")}
                         controls
                         muted
+                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
                       >
                         <source
                           src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
@@ -203,11 +201,12 @@ class Portfolio extends React.Component {
                         />
                       </video>
                     </div>
-                    <div>
+                    <div style={{width: '280px', flex: '0 0 280px'}}>
                       <video
                         poster={require("../images/IASECURITY/mak22.png")}
                         controls
                         muted
+                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
                       >
                         <source
                           src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
@@ -215,11 +214,12 @@ class Portfolio extends React.Component {
                         />
                       </video>
                     </div>
-                    <div>
+                    <div style={{width: '280px', flex: '0 0 280px'}}>
                       <video
                         poster={require("../images/IASECURITY/Skull.png")}
                         controls
                         muted
+                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
                       >
                         <source
                           src={require("../images/IASECURITY/Real.mp4")}
@@ -227,16 +227,46 @@ class Portfolio extends React.Component {
                         />
                       </video>
                     </div>
-                    <div>
+                    <div style={{width: '280px', flex: '0 0 280px'}}>
                       <video
                         poster={require("../images/IASECURITY/portada.png")}
                         controls
                         muted
+                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
                       >
                         <source src={promoVideo} type="video/mp4" />
                       </video>
                     </div>
                   </div>
+                  {/* Botón de YouTube movido aquí */}
+                  <a
+                    href="https://youtu.be/2W7S_aO_W9Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontWeight: 'bold',
+                      color: '#e53935',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      margin: '18px 0 0 0',
+                      fontSize: '1.05em',
+                      verticalAlign: 'middle'
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      style={{ verticalAlign: 'middle', marginTop: '-2px' }}
+                    >
+                      <path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Ver video completo en YouTube
+                  </a>
+                  {/* ...botón movido a la sección de demos... */}
                 </div>
               </div>
             </div>
