@@ -543,8 +543,8 @@ class Portfolio extends React.Component {
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} data-lightbox="gallery-pizzeria">
-                    <img src={require("../images/PIZZERIA/PIZZARINCONCITO_1.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
+                  <a href={require("../images/PIZZERIA/pizzapromo.png")} data-lightbox="gallery-pizzeria">
+                    <img src={require("../images/PIZZERIA/pizzapromo.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -564,11 +564,6 @@ class Portfolio extends React.Component {
                     </ul>
                   </div>
                 </div>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_3.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_4.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_5.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/PIZZARINCONCITO_6.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PIZZERIA/agoogleindexacion.png")} data-lightbox="gallery-pizzeria" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
             {/* Green Eco Park — Atracciones y Naturaleza */}
