@@ -147,18 +147,14 @@ class Portfolio extends React.Component {
             <h4 className="mt-5 mb-3" style={{fontWeight:'bold', color:'#fff'}}>AI Projects</h4>
             <div className="row">
               {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
-              <div className="col-md-4">
+              <div className="col-md-12">
                 <div className="work-box">
                 <div className="work-img">
-                  {/* Carrusel de imágenes de IASECURITY */}
-                  <Carousel
-                    images={[
-                      require("../images/IASECURITY/mak21.png"),
-                      require("../images/IASECURITY/mak22.png"),
-                      require("../images/IASECURITY/Skull.png"),
-                      require("../images/IASECURITY/portada.png")
-                    ]}
-                    title="AI Security Gallery"
+                  {/* Imagen única de AI Security Gallery */}
+                  <img 
+                    src={require("../images/IASECURITY/modulesSecurity.png")}
+                    alt="AI Security Gallery"
+                    style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
                   />
                 </div>
                 <div className="work-content">
@@ -245,7 +241,8 @@ class Portfolio extends React.Component {
               </div>
             </div>
             {/* AI CAPABILITIES SHOWCASE */}
-            <div className="col-md-8">
+            <div className="row">
+              <div className="col-md-12">
               <div style={{
                 background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
                 padding: '30px',
@@ -334,10 +331,10 @@ class Portfolio extends React.Component {
             </div>
           </div>
           </div> {/* end ai-bg */}
-
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
           <div className="row">
+        </div> {/* cierre container principal */}
             {/* Mundo Movil JR — Online Store */}
             <div className="col-md-4">
               <div className="work-box">
