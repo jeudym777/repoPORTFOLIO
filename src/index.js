@@ -19,33 +19,23 @@ import 'lightbox2/dist/js/lightbox.min.js';
 import './libs/lightbox-touch.js';
 
 import * as serviceWorker from './serviceWorker';
-
-//import components
-import Navbar from './components/navbar.jsx';
-import Intro from './components/intro.jsx';
-import Services from './components/services.jsx';
-import About from './components/about.jsx';
-import Experience from './components/experience.jsx';
-import Portfolio from './components/portfolio.jsx';
-import Contact from './components/contact.jsx';
-import Preloader from './components/preloader';
-import WhatsAppButton from './components/whatsapp-button.jsx';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from './Main';
 
 
 ReactDOM.render(
-    <React.Fragment>
-        <Navbar />
-        <Intro />
-        <Portfolio />
-        <Services />
-        <Experience />
-        <About />
-        <Contact />
-        <WhatsAppButton />
-        <Preloader />
-    </React.Fragment>,
-document.getElementById('root'));
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Main/>} />
+            <Route path="/services" element={<Main/>} />
+            <Route path="/work" element={<Main/>} />
+            <Route path="/about" element={<Main/>} />
+            <Route path="/contact" element={<Main/>} />
+            <Route path="*" element={<Main/>} />
+        </Routes>
+    </BrowserRouter>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
