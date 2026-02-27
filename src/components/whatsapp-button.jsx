@@ -2,9 +2,9 @@ import React from "react";
 
 class WhatsAppButton extends React.Component {
   render() {
-    // Cambia este número por tu número de WhatsApp (con código de país, sin + ni espacios)
-    const phoneNumber = "50687025190"; // Ejemplo: Costa Rica +506
-    const message = "Hi! I'm interested in your AI & software development services.";
+    // Número de WhatsApp (código de país, sin + ni espacios)
+    const phoneNumber = "50687025190"; // Costa Rica +506
+    const message = "¡Hola! Estoy interesado en sus servicios de IA y desarrollo de software.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     return (
