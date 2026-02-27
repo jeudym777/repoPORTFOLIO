@@ -228,45 +228,24 @@ class Portfolio extends React.Component {
                       </video>
                     </div>
                     <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <video
-                        poster={require("../images/IASECURITY/portada.png")}
-                        controls
-                        muted
-                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      >
-                        <source src={promoVideo} type="video/mp4" />
-                      </video>
+                       
                     </div>
                   </div>
-                  {/* Botón de YouTube movido aquí */}
-                  <a
-                    href="https://youtu.be/2W7S_aO_W9Q"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontWeight: 'bold',
-                      color: '#e53935',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      margin: '18px 0 0 0',
-                      fontSize: '1.05em',
-                      verticalAlign: 'middle'
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style={{ verticalAlign: 'middle', marginTop: '-2px' }}
-                    >
-                      <path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    Ver video completo en YouTube
-                  </a>
-                  {/* ...botón movido a la sección de demos... */}
+                  {/* YouTube embebido: video completo mostrado directamente en la cuadrícula */}
+                  <div style={{width: '100%', marginTop: '18px', flex: '0 0 100%'}}>
+                    <div style={{maxWidth: '980px', margin: '0 auto', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 6px 20px rgba(0,0,0,0.35)'}}>
+                      <iframe
+                        src="https://www.youtube.com/embed/2W7S_aO_W9Q"
+                        title="AI Security Demos - Full Video"
+                        width="100%"
+                        height="480"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        style={{display: 'block'}}
+                      ></iframe>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
