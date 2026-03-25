@@ -51,6 +51,7 @@ class Contact extends React.Component {
                         boxShadow: 'none',
                         textDecoration: 'none',
                         overflow: 'hidden',
+                        /* use flex to center contents */
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center'
@@ -74,6 +75,7 @@ class Contact extends React.Component {
                         boxShadow: 'none',
                         textDecoration: 'none',
                         overflow: 'hidden',
+                        /* use flex to center contents */
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center'
