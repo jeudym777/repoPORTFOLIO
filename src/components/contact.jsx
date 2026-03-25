@@ -41,7 +41,6 @@ class Contact extends React.Component {
                       rel="noopener noreferrer"
                       aria-label="Instagram"
                       style={{
-                        display: 'inline-block',
                         width: '44px',
                         height: '44px',
                         padding: 0,
@@ -65,7 +64,6 @@ class Contact extends React.Component {
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
                       style={{
-                        display: 'inline-block',
                         width: '44px',
                         height: '44px',
                         padding: 0,
