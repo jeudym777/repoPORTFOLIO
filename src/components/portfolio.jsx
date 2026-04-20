@@ -169,6 +169,8 @@ class Portfolio extends React.Component {
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
                       <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
+                     <li><b>Role:</b> AI Engineer </li>
+
                       <li style={{display:'flex', alignItems:'center', gap:'12px', marginTop:'8px'}}>
                         <b style={{marginRight:'10px'}}>Client:</b>
                         <div style={{display:'flex', alignItems:'center', gap:'18px'}}>
@@ -361,6 +363,8 @@ class Portfolio extends React.Component {
                     <span>Commercial Website & CRM</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Stack:</b> React, SQL Server (Auth/DB/Storage with RLS), React Hook Form, Javascript</li>
+                      <li><b>Role:</b> Full-Stack Web Developer</li>
+
                       <li><b>Hosting:</b> Cloudflare</li>
                       <li><b>Role:</b> Full Stack Developer</li>
                       <li>Commercial website with integrated CRM system for mobile phone store.</li>
@@ -390,6 +394,7 @@ class Portfolio extends React.Component {
                     <span>Web Site</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li><b>Role:</b> Full-Stack Technical Consultant </li>
                       <li>Clear hotel presentation and its proposal to enjoy La Fortuna, Costa Rica.</li>
                       <li>Guest-oriented content: photos of the place, experience description and quick contact methods.</li>
                       <li>Simple navigation by sections like Home, Rooms, Gallery, Location and Contact.</li>
@@ -422,7 +427,7 @@ class Portfolio extends React.Component {
                     <br />
                     <span>Web Project</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li><b>Role:</b> Full-Stack Technical Consultant</li>
                       <li>Discover hiking routes, viewpoints and weekend plans with real photos.</li>
                       <li>Content designed for the explorer: what to bring, how to get there and what to expect from the tour.</li>
                       <li>Simple navigation by sections like Home, Routes, Blog and Contact.</li>
@@ -452,16 +457,13 @@ class Portfolio extends React.Component {
                   <div className="w-more">
                     <span className="w-ctegory">Construction & remodeling services in La Fortuna</span>
                     <br />
-                    <span>Web Site</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React + Vite, Supabase (Auth, Database), Cloudflare (Hosting & Storage)</li>
+                      <li><b>Role:</b> Full-Stack Technical Consultant (Auth, Database, Hosting & Storage)</li>
                       <li>Presentation of key services: construction, remodeling and maintenance.</li>
                       <li>Visual portfolio of completed work to build trust.</li>
                       <li>Coverage in La Fortuna and surrounding areas with direct contact for quotes.</li>
                       <li>Visible calls-to-action to request budget and schedule a visit.</li>
-                      <li>
-                        <a href="https://construccioneslafortuna.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
-                      </li>
+                      
                     </ul>
                   </div>
                 </div>
@@ -540,7 +542,7 @@ class Portfolio extends React.Component {
                     <span>Landing Page</span>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
-                      <li><b>Rol:</b> Diseño UI, desarrollo front-end, copy básico y SEO on-page.</li>
+                      <li><b>Rol:</b> Full stack web developer / Google SEO .</li>
                       <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
                       <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
                       <li>
