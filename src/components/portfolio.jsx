@@ -58,6 +58,10 @@ if (idx > 0) {
 const toledoContext = require.context("../images/toledogame", false, /\.(png|jpe?g|svg)$/);
 const toledoImages = toledoContext.keys().map(toledoContext);
 
+// load AI Publicista project images
+const publicistaIAContext = require.context("../images/PublicistaIA", false, /\.(png|jpe?g|svg)$/);
+const publicistaIAImages = publicistaIAContext.keys().map(publicistaIAContext);
+
 class Portfolio extends React.Component {
   constructor() {
     super();
@@ -67,6 +71,7 @@ class Portfolio extends React.Component {
       // toggle flags left here in case they are needed later; currently unused
       showAllWebProjects: true,
       showGreenEcoPark: false,
+      publicistaIAImageIndex: 0,
     };
   }
 
@@ -84,6 +89,21 @@ class Portfolio extends React.Component {
 
   toggleAllWebProjects = () => {
     this.setState((prevState) => ({ showAllWebProjects: !prevState.showAllWebProjects }));
+  };
+
+  nextPublicistaImage = () => {
+    this.setState((prevState) => ({
+      publicistaIAImageIndex: (prevState.publicistaIAImageIndex + 1) % publicistaIAImages.length,
+    }));
+  };
+
+  prevPublicistaImage = () => {
+    this.setState((prevState) => ({
+      publicistaIAImageIndex:
+        prevState.publicistaIAImageIndex === 0
+          ? publicistaIAImages.length - 1
+          : prevState.publicistaIAImageIndex - 1,
+    }));
   };
 
   render() {
@@ -252,6 +272,108 @@ class Portfolio extends React.Component {
                 </div>
               </div>
             </div>
+
+            {/* Publicista IA — AI Ads Assistant */}
+            <div className="row mt-4">
+              <div className="col-md-12">
+                <div className="work-box">
+                  <div className="work-img" style={{position: 'relative'}}>
+                    {publicistaIAImages && publicistaIAImages.length > 0 && (
+                      <>
+                        <img 
+                          src={publicistaIAImages[this.state.publicistaIAImageIndex]}
+                          alt="Publicista IA"
+                          style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
+                        />
+                        <button
+                          onClick={this.prevPublicistaImage}
+                          style={{
+                            position: 'absolute',
+                            left: '10px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'rgba(0,0,0,0.6)',
+                            color: '#fff',
+                            border: 'none',
+                            fontSize: '24px',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background 0.3s'
+                          }}
+                          onMouseOver={(e) => e.target.style.background = 'rgba(0,0,0,0.9)'}
+                          onMouseOut={(e) => e.target.style.background = 'rgba(0,0,0,0.6)'}
+                        >
+                          ‹
+                        </button>
+                        <button
+                          onClick={this.nextPublicistaImage}
+                          style={{
+                            position: 'absolute',
+                            right: '10px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'rgba(0,0,0,0.6)',
+                            color: '#fff',
+                            border: 'none',
+                            fontSize: '24px',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background 0.3s'
+                          }}
+                          onMouseOver={(e) => e.target.style.background = 'rgba(0,0,0,0.9)'}
+                          onMouseOut={(e) => e.target.style.background = 'rgba(0,0,0,0.6)'}
+                        >
+                          ›
+                        </button>
+                        <div style={{
+                          position: 'absolute',
+                          bottom: '10px',
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          color: '#fff',
+                          fontSize: '12px',
+                          background: 'rgba(0,0,0,0.5)',
+                          padding: '4px 12px',
+                          borderRadius: '12px'
+                        }}>
+                          {this.state.publicistaIAImageIndex + 1} / {publicistaIAImages.length}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title" style={{ fontSize: '1.3rem', fontWeight: '800' }}>
+                      <b>Publicista IA — Generador de Anuncios y Copys</b>
+                    </h2>
+                    <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>
+                      Plataforma de IA para crear ideas de campanas, copies y creativos para redes sociales.
+                    </p>
+                    <div className="w-more">
+                      <span className="w-ctegory">Python, FastApi, OpenAI API, Prompt Engineering, UX/UI</span>
+                      <br />
+                      <span>Producto digital </span>
+                      <ul style={{ marginTop: '10px', marginBottom: '0', paddingLeft: '18px', fontSize: '0.95em' }}>
+                        <li><b>Descripcion:</b>  Herramienta para acelerar la creacion de contenido publicitario a gran escala con agente de IA. Permite generar propuestas de anuncios por objetivo, tono y tipo de negocio.</li>
+                        <li><b>Stack:</b> Python, JavaScript, OpenAI API, componentes reutilizables y flujo conversacional. Disponible para n8n, UI, Telegram</li>
+                        <li><b>Rol:</b> AI Engineer & Full-Stack Developer.</li>
+                        <li><b>Resultado:</b> Reduccion del 85% tiempo de ideacion y produccion de copies para campanas digitales.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* AI CAPABILITIES SHOWCASE */}
             <div className="row">
               <div className="col-md-12">
