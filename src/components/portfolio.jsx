@@ -1,6 +1,8 @@
 import React from "react";
 import Carousel from "./carousel";
 import AllservicesCarousel from "../utils/allservicesCarousel";
+import LazyImage from "./LazyImage";
+import LazyVideo from "./LazyVideo";
 
 // Video promocional
 import promoVideo from "../videos/CLIP_PROMORUFFTUFF_original.mp4";
@@ -172,7 +174,7 @@ class Portfolio extends React.Component {
                 <div className="work-box">
                 <div className="work-img">
                   {/* Imagen única de AI Security Gallery */}
-                  <img 
+                  <LazyImage 
                     src={require("../images/IASECURITY/modulesSecurity.png")}
                     alt="AI Security Gallery"
                     style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
@@ -212,43 +214,31 @@ class Portfolio extends React.Component {
                   </h5>
                   <div className="video-grid" style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
                     <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <video
+                      <LazyVideo
+                        src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
                         poster={require("../images/IASECURITY/mak21.png")}
                         controls
                         muted
                         style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      >
-                        <source
-                          src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
-                          type="video/mp4"
-                        />
-                      </video>
+                      />
                     </div>
                     <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <video
+                      <LazyVideo
+                        src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
                         poster={require("../images/IASECURITY/mak22.png")}
                         controls
                         muted
                         style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      >
-                        <source
-                          src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
-                          type="video/mp4"
-                        />
-                      </video>
+                      />
                     </div>
                     <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <video
+                      <LazyVideo
+                        src={require("../images/IASECURITY/Real.mp4")}
                         poster={require("../images/IASECURITY/Skull.png")}
                         controls
                         muted
                         style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      >
-                        <source
-                          src={require("../images/IASECURITY/Real.mp4")}
-                          type="video/mp4"
-                        />
-                      </video>
+                      />
                     </div>
                     <div style={{width: '280px', flex: '0 0 280px'}}>
                        
@@ -280,7 +270,7 @@ class Portfolio extends React.Component {
                   <div className="work-img" style={{position: 'relative'}}>
                     {publicistaIAImages && publicistaIAImages.length > 0 && (
                       <>
-                        <img 
+                        <LazyImage 
                           src={publicistaIAImages[this.state.publicistaIAImageIndex]}
                           alt="Publicista IA"
                           style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
@@ -474,7 +464,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} data-lightbox="gallery-mundomoviljr">
-                    <img src={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} alt="Mundo Movil JR — Online Store" className="img-fluid" />
+                    <LazyImage src={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} alt="Mundo Movil JR — Online Store" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -505,7 +495,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/HotelCampoArenal/hcArenal.png")} data-lightbox="gallery-hotel-campo-arenal">
-                    <img src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
+                    <LazyImage src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -539,7 +529,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/TICOTREKKER/ticotreekerimages.png")} data-lightbox="gallery-ticotrekker">
-                    <img src={require("../images/TICOTREKKER/ticotreekerimages.png")} alt="TicoTrekker — Aventuras en Costa Rica" className="img-fluid" />
+                    <LazyImage src={require("../images/TICOTREKKER/ticotreekerimages.png")} alt="TicoTrekker — Aventuras en Costa Rica" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -571,7 +561,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/contructoraAPP/contru1.png")} data-lightbox="gallery-construcciones-lafortuna">
-                    <img src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
+                    <LazyImage src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -606,7 +596,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
-                    <img src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
+                    <LazyImage src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -633,7 +623,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/DOCTORPAGE/medicalCRM.png")} data-lightbox="gallery-doctorpage">
-                    <img src={require("../images/DOCTORPAGE/medicalCRM.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
+                    <LazyImage src={require("../images/DOCTORPAGE/medicalCRM.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -653,7 +643,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={require("../images/PIZZERIA/pizzapromo.png")} data-lightbox="gallery-pizzeria">
-                    <img src={require("../images/PIZZERIA/pizzapromo.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
+                    <LazyImage src={require("../images/PIZZERIA/pizzapromo.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -680,7 +670,7 @@ class Portfolio extends React.Component {
                 <div className="work-box">
                   <div className="work-img">
                     <a href={require("../images/GREENECOPARK/greenecoparkimage0.png")} data-lightbox="gallery-green-eco-park">
-                      <img src={require("../images/GREENECOPARK/greenecoparkimage0.png")} alt="Green Eco Park — Atracciones y Naturaleza" className="img-fluid" />
+                      <LazyImage src={require("../images/GREENECOPARK/greenecoparkimage0.png")} alt="Green Eco Park — Atracciones y Naturaleza" className="img-fluid" />
                     </a>
                   </div>
                   <div className="work-content">
@@ -946,14 +936,12 @@ class Portfolio extends React.Component {
               <div className="video-section text-center">
                 <h5 className="mb-3" style={{fontWeight:'bold', color: '#fff'}}>Featured: Ruff and Tuff Gameplay</h5>
                 <div className="video-container" style={{maxWidth: '800px', margin: '0 auto'}}>
-                  <video 
-                    controls 
+                  <LazyVideo
+                    src={promoVideo}
+                    poster=""
+                    controls
                     style={{width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.3)'}}
-                    poster="" 
-                  >
-                    <source src={promoVideo} type="video/mp4" />
-                    Tu navegador no soporta la reproducción de video.
-                  </video>
+                  />
                   <p className="mt-3" style={{color: '#94a3b8', fontSize: '0.95em'}}>
                     Client: Toledo Again and DjP
                   </p>
@@ -967,7 +955,7 @@ class Portfolio extends React.Component {
               <div className="work-box">
                 <div className="work-img">
                   <a href={st1} data-lightbox="gallery-skulltroop">
-                    <img src={st1} alt="Skull Troop" className="img-fluid" />
+                    <LazyImage src={st1} alt="Skull Troop" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">

@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, lazy, Suspense} from 'react';
 import {useLocation} from 'react-router-dom';
 
 import Navbar from './components/navbar.jsx';
 import Intro from './components/intro.jsx';
-import Services from './components/services.jsx';
 import About from './components/about.jsx';
-import Experience from './components/experience.jsx';
-import Portfolio from './components/portfolio.jsx';
 import Contact from './components/contact.jsx';
 import Preloader from './components/preloader';
 import WhatsAppButton from './components/whatsapp-button.jsx';
+
+// Lazy load heavy components for better initial load time
+const Services = lazy(() => import('./components/services.jsx'));
+const Experience = lazy(() => import('./components/experience.jsx'));
+const Portfolio = lazy(() => import('./components/portfolio.jsx'));
 
 export default function Main(){
   const location = useLocation();
@@ -39,10 +41,14 @@ export default function Main(){
     <>
       <Navbar />
       <Intro />
-      <Portfolio />
-      <Services />
-      <Experience />
-      <About />
+      
+      <Suspense fallback={<div style={{minHeight: '500px'}}></div>}>
+        <About />
+        <Services />
+        <Portfolio />
+        <Experience />
+      </Suspense>
+      
       <Contact />
       <WhatsAppButton />
       <Preloader />
