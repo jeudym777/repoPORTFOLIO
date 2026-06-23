@@ -28,6 +28,15 @@ class Intro extends React.Component {
                 }}
               />
               <div style={{ textAlign: 'center', maxWidth: '700px' }}>
+                <p style={{ 
+                  fontSize: '1.3rem', 
+                  color: '#4fc3f7', 
+                  fontWeight: 400,
+                  marginBottom: '10px',
+                  opacity: 0.9
+                }}>
+                  ¡Hola! 👋
+                </p>
                 <h1 className="intro-title mb-3" style={{ fontSize: '2.4rem', lineHeight: 1.2 }}>
                   Custom AI & Software Solutions for Businesses
                 </h1>
