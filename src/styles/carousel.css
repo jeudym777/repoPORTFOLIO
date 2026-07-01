@@ -121,6 +121,17 @@
   font-weight: 500;
 }
 
+/* Previene que el hover de work-box afecte al carrusel */
+.work-box:hover .work-img .carousel-container .carousel-image {
+  transform: translate(-50%, -50%) !important;
+  scale: 1 !important;
+}
+
+.work-box:hover .work-img .carousel-container img {
+  transform: none !important;
+  scale: 1 !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .carousel-btn {
