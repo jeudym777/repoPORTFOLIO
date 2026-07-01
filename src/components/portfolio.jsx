@@ -4,6 +4,15 @@ import AllservicesCarousel from "../utils/allservicesCarousel";
 import LazyImage from "./LazyImage";
 import LazyVideo from "./LazyVideo";
 
+// Imágenes de Publicista IA
+import publicista1 from "../images/PublicistaIA/1.png";
+import publicista2 from "../images/PublicistaIA/2.png";
+import publicista3 from "../images/PublicistaIA/3.png";
+import publicista4 from "../images/PublicistaIA/4.png";
+import publicista5 from "../images/PublicistaIA/5.png";
+import publicista6 from "../images/PublicistaIA/6.png";
+import yeooCompanyPromo from "../images/yeoocompany/promoyeoocompany.png";
+
 // Video promocional
 import promoVideo from "../videos/CLIP_PROMORUFFTUFF_original.mp4";
 
@@ -60,9 +69,8 @@ if (idx > 0) {
 const toledoContext = require.context("../images/toledogame", false, /\.(png|jpe?g|svg)$/);
 const toledoImages = toledoContext.keys().map(toledoContext);
 
-// load AI Publicista project images
-const publicistaIAContext = require.context("../images/PublicistaIA", false, /\.(png|jpe?g|svg)$/);
-const publicistaIAImages = publicistaIAContext.keys().map(publicistaIAContext);
+// load AI Publicista project images (imports explícitos)
+const publicistaIAImages = [publicista1, publicista2, publicista3, publicista4, publicista5, publicista6];
 
 class Portfolio extends React.Component {
   constructor() {
@@ -73,7 +81,6 @@ class Portfolio extends React.Component {
       // toggle flags left here in case they are needed later; currently unused
       showAllWebProjects: true,
       showGreenEcoPark: false,
-      publicistaIAImageIndex: 0,
     };
   }
 
@@ -91,21 +98,6 @@ class Portfolio extends React.Component {
 
   toggleAllWebProjects = () => {
     this.setState((prevState) => ({ showAllWebProjects: !prevState.showAllWebProjects }));
-  };
-
-  nextPublicistaImage = () => {
-    this.setState((prevState) => ({
-      publicistaIAImageIndex: (prevState.publicistaIAImageIndex + 1) % publicistaIAImages.length,
-    }));
-  };
-
-  prevPublicistaImage = () => {
-    this.setState((prevState) => ({
-      publicistaIAImageIndex:
-        prevState.publicistaIAImageIndex === 0
-          ? publicistaIAImages.length - 1
-          : prevState.publicistaIAImageIndex - 1,
-    }));
   };
 
   render() {
@@ -267,78 +259,9 @@ class Portfolio extends React.Component {
             <div className="row mt-4">
               <div className="col-md-12">
                 <div className="work-box">
-                  <div className="work-img" style={{position: 'relative'}}>
+                  <div className="work-img">
                     {publicistaIAImages && publicistaIAImages.length > 0 && (
-                      <>
-                        <LazyImage 
-                          src={publicistaIAImages[this.state.publicistaIAImageIndex]}
-                          alt="Publicista IA"
-                          style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
-                        />
-                        <button
-                          onClick={this.prevPublicistaImage}
-                          style={{
-                            position: 'absolute',
-                            left: '10px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'rgba(0,0,0,0.6)',
-                            color: '#fff',
-                            border: 'none',
-                            fontSize: '24px',
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '50%',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'background 0.3s'
-                          }}
-                          onMouseOver={(e) => e.target.style.background = 'rgba(0,0,0,0.9)'}
-                          onMouseOut={(e) => e.target.style.background = 'rgba(0,0,0,0.6)'}
-                        >
-                          ‹
-                        </button>
-                        <button
-                          onClick={this.nextPublicistaImage}
-                          style={{
-                            position: 'absolute',
-                            right: '10px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            background: 'rgba(0,0,0,0.6)',
-                            color: '#fff',
-                            border: 'none',
-                            fontSize: '24px',
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '50%',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'background 0.3s'
-                          }}
-                          onMouseOver={(e) => e.target.style.background = 'rgba(0,0,0,0.9)'}
-                          onMouseOut={(e) => e.target.style.background = 'rgba(0,0,0,0.6)'}
-                        >
-                          ›
-                        </button>
-                        <div style={{
-                          position: 'absolute',
-                          bottom: '10px',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          color: '#fff',
-                          fontSize: '12px',
-                          background: 'rgba(0,0,0,0.5)',
-                          padding: '4px 12px',
-                          borderRadius: '12px'
-                        }}>
-                          {this.state.publicistaIAImageIndex + 1} / {publicistaIAImages.length}
-                        </div>
-                      </>
+                      <Carousel images={publicistaIAImages} title="Publicista IA" />
                     )}
                   </div>
                   <div className="work-content">
@@ -358,6 +281,63 @@ class Portfolio extends React.Component {
                         <li><b>Rol:</b> AI Engineer & Full-Stack Developer.</li>
                         <li><b>Resultado:</b> Reduccion del 85% tiempo de ideacion y produccion de copies para campanas digitales.</li>
                       </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* YEOO Company — AI Agents Platform */}
+            <div className="row mt-4">
+              <div className="col-md-12">
+                <div className="work-box">
+                  <div className="work-img">
+                    <LazyImage 
+                      src={yeooCompanyPromo}
+                      alt="YEOO Company AI Agents"
+                      style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
+                    />
+                  </div>
+                  <div className="work-content">
+                    <h2 className="w-title" style={{ fontSize: '1.3rem', fontWeight: '800' }}>
+                      <b>YEOO Company — AI Agents Platform</b>
+                    </h2>
+                    <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>
+                      Intelligent AI agent ecosystem for modern business automation and growth.
+                    </p>
+                    <div className="w-more">
+                      <span className="w-ctegory">React, AI Agents, Automation, Cloudflare, Full-Stack AI</span>
+                      <br />
+                      <span>AI Product</span>
+                      <ul style={{ marginTop: '10px', marginBottom: '0', paddingLeft: '18px', fontSize: '0.95em' }}>
+                        <li><b>Description:</b> Enterprise-grade AI agent platform that orchestrates intelligent workflows, automates repetitive tasks, and delivers data-driven insights — empowering businesses to scale operations without scaling headcount.</li>
+                        <li><b>Stack:</b> React, Advanced AI Agent Architecture, Cloudflare Pages & Workers, REST API integration, Real-time data processing</li>
+                        <li><b>Role:</b> AI Engineer & Full-Stack Developer.</li>
+                        <li><b>Result:</b> Delivered a production-ready AI ecosystem that reduces manual workload by 80% and accelerates decision-making through intelligent automation.</li>
+                      </ul>
+                      <div style={{ marginTop: '15px' }}>
+                        <a 
+                          href="https://yeoo-company.pages.dev/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 24px',
+                            background: 'linear-gradient(135deg, #4fc3f7, #0077b6)',
+                            color: '#fff',
+                            borderRadius: '8px',
+                            fontWeight: 'bold',
+                            fontSize: '0.95rem',
+                            textDecoration: 'none',
+                            boxShadow: '0 4px 15px rgba(79, 195, 247, 0.3)'
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                          Visit Live App
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
