@@ -29,11 +29,12 @@ const Intro = () => {
               src={fotoPerfil}
               alt="Yeudi Martinez - AI Developer & Software Engineer"
               style={{
-                width: 200,
-                height: 200,
+                width: 260,
+                height: 260,
                 objectFit: 'cover',
+                objectPosition: 'center top',
                 borderRadius: '50%',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+                boxShadow: '0 6px 25px rgba(0,0,0,0.3)',
                 background: '#eee',
               }}
             />
