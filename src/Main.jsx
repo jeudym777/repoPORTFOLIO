@@ -18,9 +18,26 @@ export default function Main(){
   const location = useLocation();
 
   useEffect(() => {
-    // Record page visit
-    const details = `UA: ${navigator.userAgent} | Lang: ${navigator.language}`;
-    trackEvent('visit', 'Home', details);
+    const recordVisit = async () => {
+      let geoInfo = "Unknown Location";
+      try {
+        const response = await fetch("https://freeipapi.com/api/json");
+        if (response.ok) {
+          const geo = await response.json();
+          geoInfo = `${geo.cityName}, ${geo.regionName}, ${geo.countryName} (IP: ${geo.ipAddress})`;
+        }
+      } catch (e) {
+        console.warn("Could not fetch geolocation:", e);
+      }
+      
+      const referrer = document.referrer ? ` | Referrer: ${document.referrer}` : "";
+      const screenRes = ` | Screen: ${window.screen.width}x${window.screen.height}`;
+      const details = `UA: ${navigator.userAgent} | Lang: ${navigator.language}${screenRes}${referrer} | Loc: ${geoInfo}`;
+      
+      trackEvent('visit', 'Home', details);
+    };
+
+    recordVisit();
   }, []);
 
   useEffect(()=>{
