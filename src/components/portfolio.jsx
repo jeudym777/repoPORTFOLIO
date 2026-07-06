@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "./carousel";
 import AllservicesCarousel from "../utils/allservicesCarousel";
 import LazyImage from "./LazyImage";
 import LazyVideo from "./LazyVideo";
+import Lightbox from "./lightbox.jsx";
+import { trackEvent, getLikesCount } from "../utils/analytics";
 
 // Imágenes de Publicista IA
 import publicista1 from "../images/PublicistaIA/1.png";
 import publicista2 from "../images/PublicistaIA/2.png";
 import publicista3 from "../images/PublicistaIA/3.png";
 import publicista4 from "../images/PublicistaIA/4.png";
-import publicista5 from "../images/PublicistaIA/5.png";
-import publicista6 from "../images/PublicistaIA/6.png";
 import yeooCompanyPromo from "../images/yeoocompany/promoyeoocompany.png";
 
 // Video promocional
@@ -57,11 +57,9 @@ import stvr10 from "../images/SKULLTROOPVR/skullgame2.png";
 // load promotional background images from folder
 const promoImagesContext = require.context("../images/PromoImages", false, /\.(png|jpe?g|svg)$/);
 let promoImages = promoImagesContext.keys().map(promoImagesContext);
-// ensure promoimage_(8).png appears first if present
 const targetName = "promoimage_(8).png";
 const idx = promoImages.findIndex(img => img.includes(targetName));
 if (idx > 0) {
-  // rotate array
   promoImages = promoImages.slice(idx).concat(promoImages.slice(0, idx));
 }
 
@@ -69,42 +67,154 @@ if (idx > 0) {
 const toledoContext = require.context("../images/toledogame", false, /\.(png|jpe?g|svg)$/);
 const toledoImages = toledoContext.keys().map(toledoContext);
 
-// load AI Publicista project images (imports explícitos)
-const publicistaIAImages = [publicista1, publicista2, publicista3, publicista4, publicista5, publicista6];
+// load AI Publicista project images
+const publicistaIAImages = [publicista1, publicista2, publicista3, publicista4];
 
-class Portfolio extends React.Component {
-  constructor() {
-    super();
-    const loadedImages = AllservicesCarousel.loadImages();
-    this.state = {
-      allservicesImages: loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5),
-      // toggle flags left here in case they are needed later; currently unused
-      showAllWebProjects: true,
-      showGreenEcoPark: false,
+const Portfolio = () => {
+  const loadedImages = AllservicesCarousel.loadImages();
+  const [allservicesImages] = useState(loadedImages.length > 0 ? loadedImages : AllservicesCarousel.generatePlaceholders(5));
+  const [showAllWebProjects, setShowAllWebProjects] = useState(true);
+  const [showGreenEcoPark] = useState(false);
+
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const [likesData, setLikesData] = useState({});
+
+  // Cargar contador de likes desde Google Sheets al montar el componente
+  useEffect(() => {
+    const fetchLikes = async () => {
+      const data = await getLikesCount();
+      setLikesData(data);
     };
-  }
+    fetchLikes();
+  }, []);
 
-  toggleAIProjects = () => {
-    this.setState((prevState) => ({ showAIProjects: !prevState.showAIProjects }));
+  // Manejar el clic en "Me gusta"
+  const handleLike = (projectId) => {
+    // Actualización optimista de la interfaz
+    setLikesData((prev) => ({
+      ...prev,
+      [projectId]: (prev[projectId] || 0) + 1,
+    }));
+    // Registrar evento en Google Sheets
+    trackEvent("like", projectId);
   };
 
-  toggleWebProjects = () => {
-    this.setState((prevState) => ({ showWebProjects: !prevState.showWebProjects }));
+  // Definición de las galerías para el Lightbox nativo
+  const iaSecurityGallery = [
+    require("../images/IASECURITY/modulesSecurity.png"),
+    require("../images/IASECURITY/mak22.png"),
+    require("../images/IASECURITY/Skull.png")
+  ];
+
+  const mundomovilGallery = [
+    require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png"),
+    require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_1.png"),
+    require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_2.png"),
+    require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE3.png"),
+    require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE4.png")
+  ];
+
+  const hotelGallery = [
+    require("../images/HotelCampoArenal/hcArenal.png"),
+    require("../images/HotelCampoArenal/ahcArenal000.png"),
+    require("../images/HotelCampoArenal/hcArenal3.png"),
+    require("../images/HotelCampoArenal/hcArenal4.png"),
+    require("../images/HotelCampoArenal/hcArenal5.png"),
+    require("../images/HotelCampoArenal/googleSearch00.png")
+  ];
+
+  const ticoTrekkerGallery = [
+    require("../images/TICOTREKKER/ticotreekerimages.png"),
+    require("../images/TICOTREKKER/ticotreekerimages4.png"),
+    require("../images/TICOTREKKER/ticotreekerimages5.png"),
+    require("../images/TICOTREKKER/ticotreekerimages6.png"),
+    require("../images/TICOTREKKER/ticotreekerimages7.png")
+  ];
+
+  const constructoraGallery = [
+    require("../images/contructoraAPP/contru1.png"),
+    require("../images/contructoraAPP/constru2.png"),
+    require("../images/contructoraAPP/constru3.png")
+  ];
+
+  const lawyerGallery = [
+    require("../images/LAWYER/lawyerpage_5.png"),
+    require("../images/LAWYER/lawyerpage_1.png"),
+    require("../images/LAWYER/lawyerpage_4.png")
+  ];
+
+  const doctorpageGallery = [
+    require("../images/DOCTORPAGE/medicalCRM.png")
+  ];
+
+  const pizzeriaGallery = [
+    require("../images/PIZZERIA/pizzapromo.png")
+  ];
+
+  const greenecoparkGallery = [
+    require("../images/GREENECOPARK/greenecoparkimage0.png"),
+    require("../images/GREENECOPARK/greenecoparkinimage1.png"),
+    require("../images/GREENECOPARK/greenecoparkimage2.png")
+  ];
+
+  const skullTroopGallery = [st1, st2, st3, st4, st5];
+  const skullTroopVRGallery = [stvr1, stvr2, stvr3, stvr5, stvr6, stvr8, stvr9, stvr10];
+  const skullFightGallery = [skf1, skf2, skf3, skf4, skf5];
+  const misionMoneyGallery = [mm1, mm2, mm3, mm4, mm5, mm6, mm7, mm8];
+  
+  const penguinAdventureGallery = [
+    require("../images/PENGUINADVENTURE/MISIONMONEY_1.png"),
+    require("../images/PENGUINADVENTURE/MISIONMONEY_2.png"),
+    require("../images/PENGUINADVENTURE/MISIONMONEY_3.png")
+  ];
+
+  const openGallery = (e, images) => {
+    e.preventDefault();
+    setLightboxImages(images);
+    setLightboxIndex(0);
   };
 
-  toggleGames = () => {
-    this.setState((prevState) => ({ showVideogames: !prevState.showVideogames }));
+  const toggleWebProjects = () => {
+    setShowAllWebProjects((prev) => !prev);
   };
 
-  toggleAllWebProjects = () => {
-    this.setState((prevState) => ({ showAllWebProjects: !prevState.showAllWebProjects }));
-  };
+  // Renderizador del botón de me gusta reutilizable
+  const renderLikeButton = (projectId) => (
+    <button
+      onClick={() => handleLike(projectId)}
+      style={{
+        background: 'none',
+        border: 'none',
+        color: '#ff4b5c',
+        cursor: 'pointer',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        padding: '6px 14px',
+        borderRadius: '20px',
+        backgroundColor: 'rgba(255, 75, 92, 0.1)',
+        transition: 'all 0.2s',
+        fontSize: '0.85rem',
+        fontWeight: 'bold',
+        outline: 'none'
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.backgroundColor = 'rgba(255, 75, 92, 0.2)';
+        e.currentTarget.style.transform = 'scale(1.05)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.backgroundColor = 'rgba(255, 75, 92, 0.1)';
+        e.currentTarget.style.transform = 'scale(1)';
+      }}
+      aria-label={`Like ${projectId}`}
+    >
+      ❤️ {likesData[projectId] || 0}
+    </button>
+  );
 
-  render() {
-    // state variables for toggles are initialized but not currently used in rendering
-    const { showAllWebProjects } = this.state;
-
-    return (
+  return (
+    <>
       <section id="work" className="portfolio-mf sect-pt4 route">
         <div className="container">
           <div className="row">
@@ -119,8 +229,6 @@ class Portfolio extends React.Component {
               </div>
             </div>
           </div>
-
-          {/* Metrics and service cards removed per request */}
 
           {/* TRUSTED BY SECTION */}
           <div className="row mb-5">
@@ -144,16 +252,13 @@ class Portfolio extends React.Component {
             </div>
           </div>
 
-          {/* FEATURED VIDEO */}
           {/* AI PROJECTS */}
-          {/* background container using first promo image */}
           <div
             className="ai-bg"
             style={{
               padding: '2rem 0'
             }}
           >
-            {/* carousel showing promo images */}
             {promoImages.length > 0 && (
               <div className="promo-bg">
                 <Carousel images={promoImages} title="Promotional Background" />
@@ -164,91 +269,91 @@ class Portfolio extends React.Component {
               {/* Security AI Modules — Anti-spoofing & Weapon Detection */}
               <div className="col-md-12">
                 <div className="work-box">
-                <div className="work-img">
-                  {/* Imagen única de AI Security Gallery */}
-                  <LazyImage 
-                    src={require("../images/IASECURITY/modulesSecurity.png")}
-                    alt="AI Security Gallery"
-                    style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
-                  />
-                </div>
-                <div className="work-content">
-                  <h2 className="w-title" style={{ fontSize: '1.4rem', fontWeight: '800' }}><b>MVP Poder Judicial Costa Rica 2025</b></h2>
-                  <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>Security AI Modules — Anti-spoofing & Weapon Detection</p>
-                  <div className="w-more">
-                    <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
-                    <br />
-                    <span>ITCR / Poder Judicial Costa Rica</span>
-                    {/* YouTube link removed from here (moved to AI Security Demos) */}
-                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Achieved sub-100ms inference latency with 90%+ detection accuracy.</li>
-                      <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
-                     <li><b>Role:</b> AI Engineer </li>
-
-                      <li style={{display:'flex', alignItems:'center', gap:'12px', marginTop:'8px'}}>
-                        <b style={{marginRight:'10px'}}>Client:</b>
-                        <div style={{display:'flex', alignItems:'center', gap:'18px'}}>
-                          <img src={require('../images/logos/logotec.png')} alt="Logo TEC" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
-                          <img src={require('../images/logos/poderjudicial-Photoroom.png')} alt="Logo Poder Judicial" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
-                        </div>
-                      </li>
-                    </ul>
+                  <div className="work-img">
+                    <a href="#work" onClick={(e) => openGallery(e, iaSecurityGallery)}>
+                      <LazyImage 
+                        src={require("../images/IASECURITY/modulesSecurity.png")}
+                        alt="AI Security Gallery"
+                        style={{width: '100%', borderRadius: '12px', boxShadow: '0 4px 24px #0003', objectFit: 'cover'}}
+                      />
+                    </a>
                   </div>
-                </div>
-                {/* Imagen extra eliminada: securityIA_2.png */}
-                {/* Imágenes extra eliminadas: securityIA_2.png a securityIA_9.png */}
-                <a href={require("../images/IASECURITY/mak22.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/IASECURITY/Skull.png")} data-lightbox="gallery-iasecurity" style={{ display: "none" }}>Imagen extra</a>
-                {/* AI Security Demos - unified blue section */}
-                <div className="ai-demos-full">
-                  <h5 style={{ color: '#4fc3f7', fontWeight: 'bold', marginBottom: '12px' }}>
-                    AI Security Demos
-                  </h5>
-                  <div className="video-grid" style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
-                    <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <LazyVideo
-                        src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
-                        poster={require("../images/IASECURITY/mak21.png")}
-                        controls
-                        muted
-                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      />
-                    </div>
-                    <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <LazyVideo
-                        src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
-                        poster={require("../images/IASECURITY/mak22.png")}
-                        controls
-                        muted
-                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      />
-                    </div>
-                    <div style={{width: '280px', flex: '0 0 280px'}}>
-                      <LazyVideo
-                        src={require("../images/IASECURITY/Real.mp4")}
-                        poster={require("../images/IASECURITY/Skull.png")}
-                        controls
-                        muted
-                        style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
-                      />
-                    </div>
-                    <div style={{width: '280px', flex: '0 0 280px'}}>
-                       
+                  <div className="work-content">
+                    <h2 className="w-title" style={{ fontSize: '1.4rem', fontWeight: '800' }}><b>MVP Poder Judicial Costa Rica 2025</b></h2>
+                    <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>Security AI Modules — Anti-spoofing & Weapon Detection</p>
+                    <div className="w-more">
+                      <span className="w-ctegory">Python DL, Facenet, Yolov8, Computer Vision</span>
+                      <br />
+                      <span>ITCR / Poder Judicial Costa Rica</span>
+                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                        <li><b>Description:</b> Built and deployed real-time AI security modules for facial anti-spoofing and weapon detection. Successfully tested with Costa Rica's Judicial Branch as proof-of-concept. Deployed with sub-100ms latency and 90%+ accuracy.</li>
+                        <li><b>Stack:</b> Python, FaceNet, YOLOv8, OpenCV, Real-time inference pipelines</li>
+                        <li><b>Role:</b> AI Engineer </li>
+                        <li style={{display:'flex', alignItems:'center', gap:'12px', marginTop:'8px'}}>
+                          <b style={{marginRight:'10px'}}>Client:</b>
+                          <div style={{display:'flex', alignItems:'center', gap:'18px'}}>
+                            <img src={logoTec} alt="Logo TEC" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
+                            <img src={logoPoderJudicial} alt="Logo Poder Judicial" style={{height:'28px', width:'auto', borderRadius:'4px', boxShadow:'0 2px 8px #0001', background:'#fff', padding:'2px 6px', objectFit:'contain'}} />
+                          </div>
+                        </li>
+                      </ul>
+                      <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        {renderLikeButton('MVP Poder Judicial')}
+                      </div>
                     </div>
                   </div>
-                  {/* YouTube embebido: video completo mostrado directamente en la cuadrícula */}
-                  <div style={{width: '100%', marginTop: '18px', flex: '0 0 100%'}}>
-                    <div style={{maxWidth: '980px', margin: '0 auto', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 6px 20px rgba(0,0,0,0.35)'}}>
-                      <iframe
-                        src="https://www.youtube.com/embed/2W7S_aO_W9Q"
-                        title="AI Security Demos - Full Video"
-                        width="100%"
-                        height="480"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        style={{display: 'block'}}
-                      ></iframe>
+                  
+                  {/* AI Security Demos - unified blue section */}
+                  <div className="ai-demos-full">
+                    <h5 style={{ color: '#4fc3f7', fontWeight: 'bold', marginBottom: '12px' }}>
+                      AI Security Demos
+                    </h5>
+                    <div className="video-grid" style={{display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
+                      <div style={{width: '280px', flex: '0 0 280px'}}>
+                        <LazyVideo
+                          src={require("../images/IASECURITY/cuchilloDeteect.mp4")}
+                          poster={require("../images/IASECURITY/mak21.png")}
+                          controls
+                          muted
+                          onPlay={() => trackEvent('video_play', 'Knife Detection Video')}
+                          style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
+                        />
+                      </div>
+                      <div style={{width: '280px', flex: '0 0 280px'}}>
+                        <LazyVideo
+                          src={require("../images/IASECURITY/maskDetectionVideo.mp4")}
+                          poster={require("../images/IASECURITY/mak22.png")}
+                          controls
+                          muted
+                          onPlay={() => trackEvent('video_play', 'Mask Detection Video')}
+                          style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
+                        />
+                      </div>
+                      <div style={{width: '280px', flex: '0 0 280px'}}>
+                        <LazyVideo
+                          src={require("../images/IASECURITY/Real.mp4")}
+                          poster={require("../images/IASECURITY/Skull.png")}
+                          controls
+                          muted
+                          onPlay={() => trackEvent('video_play', 'Face Anti-Spoofing Video')}
+                          style={{width: '100%', height: '160px', objectFit: 'cover', borderRadius: '8px', boxShadow: '0 6px 18px rgba(0,0,0,0.25)'}}
+                        />
+                      </div>
+                    </div>
+                    {/* YouTube embed */}
+                    <div style={{width: '100%', marginTop: '18px', flex: '0 0 100%'}}>
+                      <div style={{maxWidth: '980px', margin: '0 auto', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 6px 20px rgba(0,0,0,0.35)'}}>
+                        <iframe
+                          src="https://www.youtube.com/embed/2W7S_aO_W9Q"
+                          title="AI Security Demos - Full Video"
+                          width="100%"
+                          height="480"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          style={{display: 'block'}}
+                        ></iframe>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -269,18 +374,21 @@ class Portfolio extends React.Component {
                       <b>Publicista IA — Generador de Anuncios y Copys</b>
                     </h2>
                     <p style={{ fontSize: '0.9em', color: '#94a3b8', margin: '5px 0 10px 0' }}>
-                      Plataforma de IA para crear ideas de campanas, copies y creativos para redes sociales.
+                      Plataforma de IA para crear ideas de campañas, copies y creativos para redes sociales.
                     </p>
                     <div className="w-more">
                       <span className="w-ctegory">Python, FastApi, OpenAI API, Prompt Engineering, UX/UI</span>
                       <br />
                       <span>Producto digital </span>
                       <ul style={{ marginTop: '10px', marginBottom: '0', paddingLeft: '18px', fontSize: '0.95em' }}>
-                        <li><b>Descripcion:</b>  Herramienta para acelerar la creacion de contenido publicitario a gran escala con agente de IA. Permite generar propuestas de anuncios por objetivo, tono y tipo de negocio.</li>
+                        <li><b>Descripción:</b> Herramienta para acelerar la creación de contenido publicitario a gran escala con agente de IA. Permite generar propuestas de anuncios por objetivo, tono y tipo de negocio.</li>
                         <li><b>Stack:</b> Python, JavaScript, OpenAI API, componentes reutilizables y flujo conversacional. Disponible para n8n, UI, Telegram</li>
                         <li><b>Rol:</b> AI Engineer & Full-Stack Developer.</li>
-                        <li><b>Resultado:</b> Reduccion del 85% tiempo de ideacion y produccion de copies para campanas digitales.</li>
+                        <li><b>Resultado:</b> Reducción del 85% tiempo de ideación y producción de copies para campañas digitales.</li>
                       </ul>
+                      <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        {renderLikeButton('Publicista IA')}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -315,26 +423,29 @@ class Portfolio extends React.Component {
                         <li><b>Role:</b> AI Engineer & Full-Stack Developer.</li>
                         <li><b>Result:</b> Delivered a production-ready AI ecosystem that reduces manual workload by 80% and accelerates decision-making through intelligent automation.</li>
                       </ul>
-                      <div style={{ marginTop: '15px' }}>
+                      
+                      <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        {renderLikeButton('YEOO Company')}
                         <a 
                           href="https://yeoo-company.pages.dev/" 
                           target="_blank" 
                           rel="noopener noreferrer"
+                          onClick={() => trackEvent('click_link', 'YEOO Company Live App')}
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
-                            padding: '10px 24px',
+                            padding: '8px 18px',
                             background: 'linear-gradient(135deg, #4fc3f7, #0077b6)',
                             color: '#fff',
                             borderRadius: '8px',
                             fontWeight: 'bold',
-                            fontSize: '0.95rem',
+                            fontSize: '0.85rem',
                             textDecoration: 'none',
-                            boxShadow: '0 4px 15px rgba(79, 195, 247, 0.3)'
+                            boxShadow: '0 4px 12px rgba(79, 195, 247, 0.2)'
                           }}
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                           Visit Live App
                         </a>
                       </div>
@@ -347,103 +458,103 @@ class Portfolio extends React.Component {
             {/* AI CAPABILITIES SHOWCASE */}
             <div className="row">
               <div className="col-md-12">
-              <div style={{
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
-                padding: '30px',
-                borderRadius: '16px',
-                height: '100%',
-                border: '1px solid rgba(79, 195, 247, 0.3)',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
-              }}>
-                <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
-                  Custom AI Detection Systems
-                </h5>
-                <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
-                  I develop <b style={{color: '#fff'}}>tailor-made computer vision and AI detection modules</b> for private enterprises. 
-                  From real-time surveillance to intelligent inventory tracking — I build systems that see, analyze, and act.
-                </p>
-                
-                <div className="row">
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Security & Access</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Facial recognition, anti-spoofing, weapon detection, intruder alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Smart Inventory</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Object counting, SKU tracking, shelf monitoring, stock alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Person Identification</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Employee tracking, VIP recognition, attendance systems, behavior analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Geolocation & Tracking</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Vehicle tracking, zone monitoring, heat maps, movement patterns</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Industrial QA</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Defect detection, quality control, assembly verification, anomaly alerts</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Vehicle & Plate Reading</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>License plate recognition, parking management, traffic analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 <div style={{
-                  marginTop: '20px',
-                  padding: '15px 20px',
-                  background: 'rgba(79, 195, 247, 0.1)',
-                  borderRadius: '10px',
-                  borderLeft: '4px solid #4fc3f7'
+                  background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
+                  padding: '30px',
+                  borderRadius: '16px',
+                  height: '100%',
+                  border: '1px solid rgba(79, 195, 247, 0.3)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
                 }}>
-                  <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
-                    <b style={{color: '#4fc3f7'}}>Need a custom solution?</b> I design and deploy AI systems tailored to your specific business requirements — from prototype to production-ready deployment.
+                  <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
+                    Custom AI Detection Systems
+                  </h5>
+                  <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
+                    I develop <b style={{color: '#fff'}}>tailor-made computer vision and AI detection modules</b> for private enterprises. 
+                    From real-time surveillance to intelligent inventory tracking — I build systems that see, analyze, and act.
                   </p>
+                  
+                  <div className="row">
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Security & Access</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Facial recognition, anti-spoofing, weapon detection, intruder alerts</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Smart Inventory</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Object counting, SKU tracking, shelf monitoring, stock alerts</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Person Identification</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Employee tracking, VIP recognition, attendance systems, behavior analysis</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Geolocation & Tracking</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Vehicle tracking, zone monitoring, heat maps, movement patterns</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Industrial QA</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Defect detection, quality control, assembly verification, anomaly alerts</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        <div>
+                          <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Vehicle & Plate Reading</h6>
+                          <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>License plate recognition, parking management, traffic analysis</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    marginTop: '20px',
+                    padding: '15px 20px',
+                    background: 'rgba(79, 195, 247, 0.1)',
+                    borderRadius: '10px',
+                    borderLeft: '4px solid #4fc3f7'
+                  }}>
+                    <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
+                      <b style={{color: '#4fc3f7'}}>Need a custom solution?</b> I design and deploy AI systems tailored to your specific business requirements — from prototype to production-ready deployment.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          </div> {/* end ai-bg */}
+
           {/* WEB PROJECTS */}
           <h4 className="mt-5 mb-3" style={{fontWeight:'bold'}}>Web Projects</h4>
           <div className="row">
-        </div> {/* cierre container principal */}
             {/* Mundo Movil JR — Online Store */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} data-lightbox="gallery-mundomoviljr">
+                  <a href="#work" onClick={(e) => openGallery(e, mundomovilGallery)}>
                     <LazyImage src={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE0.png")} alt="Mundo Movil JR — Online Store" className="img-fluid" />
                   </a>
                 </div>
@@ -456,25 +567,23 @@ class Portfolio extends React.Component {
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Stack:</b> React, SQL Server (Auth/DB/Storage with RLS), React Hook Form, Javascript</li>
                       <li><b>Role:</b> Full-Stack Web Developer</li>
-
                       <li><b>Hosting:</b> Cloudflare</li>
-                      <li><b>Role:</b> Full Stack Developer</li>
                       <li>Commercial website with integrated CRM system for mobile phone store.</li>
                       <li><b>Client:</b> Leonardo Jimenez</li>
                     </ul>
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      {renderLikeButton('Mundo Movil JR')}
+                    </div>
                   </div>
                 </div>
-                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_1.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE_2.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE3.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/MUNDOMOVILJR/MUNDOMOVILIMAGE4.png")} data-lightbox="gallery-mundomoviljr" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+
             {/* Hotel Campo Arenal — Sitio Oficial */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/HotelCampoArenal/hcArenal.png")} data-lightbox="gallery-hotel-campo-arenal">
+                  <a href="#work" onClick={(e) => openGallery(e, hotelGallery)}>
                     <LazyImage src={require("../images/HotelCampoArenal/hcArenal.png")} alt="Hotel Campo Arenal — La Fortuna" className="img-fluid" />
                   </a>
                 </div>
@@ -489,26 +598,30 @@ class Portfolio extends React.Component {
                       <li><b>Role:</b> Full-Stack Technical Consultant </li>
                       <li>Clear hotel presentation and its proposal to enjoy La Fortuna, Costa Rica.</li>
                       <li>Guest-oriented content: photos of the place, experience description and quick contact methods.</li>
-                      <li>Simple navigation by sections like Home, Rooms, Gallery, Location and Contact.</li>
-                      <li>Visible calls-to-action for queries and direct reservations.</li>
-                      <li>
-                        <a href="https://camposarenal.com/es" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
-                      </li>
+                      <li>Simple navigation by sections like Home, Rooms, Location and Contact.</li>
                     </ul>
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                      {renderLikeButton('Hotel Campo Arenal')}
+                      <a 
+                        href="https://camposarenal.com/es" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Hotel Campo Arenal Website')}
+                        style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                      >
+                        Visit website
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <a href={require("../images/HotelCampoArenal/ahcArenal000.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal3.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal4.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/hcArenal5.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/HotelCampoArenal/googleSearch00.png")} data-lightbox="gallery-hotel-campo-arenal" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+
             {/* TicoTrekker — Aventuras en Costa Rica */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/TICOTREKKER/ticotreekerimages.png")} data-lightbox="gallery-ticotrekker">
+                  <a href="#work" onClick={(e) => openGallery(e, ticoTrekkerGallery)}>
                     <LazyImage src={require("../images/TICOTREKKER/ticotreekerimages.png")} alt="TicoTrekker — Aventuras en Costa Rica" className="img-fluid" />
                   </a>
                 </div>
@@ -523,24 +636,29 @@ class Portfolio extends React.Component {
                       <li>Discover hiking routes, viewpoints and weekend plans with real photos.</li>
                       <li>Content designed for the explorer: what to bring, how to get there and what to expect from the tour.</li>
                       <li>Simple navigation by sections like Home, Routes, Blog and Contact.</li>
-                      <li>Clear calls-to-action to inspire and plan the next adventure.</li>
-                      <li>
-                        <a href="https://ticotrekker.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visit website</a>
-                      </li>
                     </ul>
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                      {renderLikeButton('TicoTrekker')}
+                      <a 
+                        href="https://ticotrekker.com/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'TicoTrekker Website')}
+                        style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                      >
+                        Visit website
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages4.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages5.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages6.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/TICOTREKKER/ticotreekerimages7.png")} data-lightbox="gallery-ticotrekker" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
+
             {/* Construcciones La Fortuna — Sitio Web */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={require("../images/contructoraAPP/contru1.png")} data-lightbox="gallery-construcciones-lafortuna">
+                  <a href="#work" onClick={(e) => openGallery(e, constructoraGallery)}>
                     <LazyImage src={require("../images/contructoraAPP/contru1.png")} alt="Construcciones La Fortuna — Sitio Web" className="img-fluid" />
                   </a>
                 </div>
@@ -555,231 +673,259 @@ class Portfolio extends React.Component {
                       <li>Visual portfolio of completed work to build trust.</li>
                       <li>Coverage in La Fortuna and surrounding areas with direct contact for quotes.</li>
                       <li>Visible calls-to-action to request budget and schedule a visit.</li>
-                      
                     </ul>
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      {renderLikeButton('Construcciones La Fortuna')}
+                    </div>
                   </div>
                 </div>
-                <a href={require("../images/contructoraAPP/constru2.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/contructoraAPP/constru3.png")} data-lightbox="gallery-construcciones-lafortuna" style={{ display: "none" }}>Imagen extra</a>
               </div>
             </div>
           </div>
-
-          {/* View More button removed: showing all web projects by default */}
 
           {/* Additional Web Projects - Collapsible */}
           {showAllWebProjects && (
             <>
-            <div className="row">
-            {/* Lawyer Olivia Oca — Legal Services */}
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={require("../images/LAWYER/lawyerpage_5.png")} data-lightbox="gallery-lawyer">
-                    <LazyImage src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                  <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
-                  <div className="w-more">
-                    <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
-                    <br />
-                    <span>Landing Page</span>
-                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
-                      <li><b>Client:</b> Lic. Olivia Oca Varela</li>
-                      <li>
-                        <a href="https://abogadamariaoliviaocavarela.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <a href={require("../images/LAWYER/lawyerpage_1.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/LAWYER/lawyerpage_4.png")} data-lightbox="gallery-lawyer" style={{ display: "none" }}>Imagen extra</a>
-              </div>
-            </div>
-            {/* Medical Patient & Clinical Records (Closed System) */}
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={require("../images/DOCTORPAGE/medicalCRM.png")} data-lightbox="gallery-doctorpage">
-                    <LazyImage src={require("../images/DOCTORPAGE/medicalCRM.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                  <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
-                  <div className="w-more">
-                    <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
-                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</li>
-                      <li><b>Client:</b> Dra Daniela Oca Varela</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Pizzería Rinconcito La Fortuna — Landing Page */}
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={require("../images/PIZZERIA/pizzapromo.png")} data-lightbox="gallery-pizzeria">
-                    <LazyImage src={require("../images/PIZZERIA/pizzapromo.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                  <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
-                  <div className="w-more">
-                    <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
-                    <br />
-                    <span>Landing Page</span>
-                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                      <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
-                      <li><b>Rol:</b> Full stack web developer / Google SEO .</li>
-                      <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
-                      <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
-                      <li>
-                        <a href="https://pizzeria-rinconcito-lafortuna.pages.dev/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {this.state.showGreenEcoPark && (
-              <div className="col-md-4">
-                <div className="work-box">
-                  <div className="work-img">
-                    <a href={require("../images/GREENECOPARK/greenecoparkimage0.png")} data-lightbox="gallery-green-eco-park">
-                      <LazyImage src={require("../images/GREENECOPARK/greenecoparkimage0.png")} alt="Green Eco Park — Atracciones y Naturaleza" className="img-fluid" />
-                    </a>
-                  </div>
-                  <div className="work-content">
-                    <h2 className="w-title">Green Eco Park — Atracciones y Naturaleza</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">Parque ecológico y actividades al aire libre en La Fortuna</span>
-                      <br />
-                      <span>Sitio web</span>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li>Experiencia familiar en medio de la naturaleza: senderos, miradores y diversión al aire libre.</li>
-                        <li>Galería con fotos reales del parque para conocer el recorrido antes de visitar.</li>
-                        <li>Información clara sobre horarios, ubicación, tarifas y contacto directo.</li>
-                        <li>Llamados a la acción visibles para planear la visita y resolver dudas.</li>
-                        <li>
-                          <a href="https://greenecopark.com/" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>Visitar sitio web</a>
-                        </li>
-                      </ul>
+              <div className="row">
+                {/* Lawyer Olivia Oca — Legal Services */}
+                <div className="col-md-4">
+                  <div className="work-box">
+                    <div className="work-img">
+                      <a href="#work" onClick={(e) => openGallery(e, lawyerGallery)}>
+                        <LazyImage src={require("../images/LAWYER/lawyerpage_5.png")} alt="Lawyer Olivia Oca" className="img-fluid" />
+                      </a>
                     </div>
-                  </div>
-                  <a href={require("../images/GREENECOPARK/greenecoparkinimage1.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
-                  <a href={require("../images/GREENECOPARK/greenecoparkimage2.png")} data-lightbox="gallery-green-eco-park" style={{ display: "none" }}>Imagen extra</a>
-                </div>
-              </div>
-            )}
-            {/* CUSTOM WEB SOLUTIONS SHOWCASE */}
-            <div className="col-md-8">
-              <div style={{
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
-                padding: '30px',
-                borderRadius: '16px',
-                height: '100%',
-                border: '1px solid rgba(79, 195, 247, 0.3)',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
-              }}>
-                <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
-                  Custom Web Solutions
-                </h5>
-                <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
-                  I build <b style={{color: '#fff'}}>tailored web applications and digital platforms</b> for businesses across industries. 
-                  From e-commerce stores to professional service websites — I deliver solutions that convert visitors into clients.
-                </p>
-                
-                <div className="row">
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>E-Commerce</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Custom online stores, payment integration, inventory management</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Hotels & Tourism</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Booking systems, galleries, availability calendars, multilingual</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Professional Services</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Lawyers, doctors, consultants — portfolios that build trust</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Business Platforms</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Dashboards, CRMs, internal tools, admin panels</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>AI Integrations</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Chatbots, smart search, recommendations, automation</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 mb-3">
-                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                      <div>
-                        <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>SEO & Performance</h6>
-                        <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Fast loading, mobile-first, Google optimized, analytics</p>
+                    <div className="work-content">
+                      <h2 className="w-title">Lawyer Olivia Oca — Legal Services</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">React, Next.js, Tailwind, Supabase, Cloudflare</span>
+                        <br />
+                        <span>Landing Page</span>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Stack:</b> React, Next.js, Tailwind, Supabase (Auth, DB), Cloudflare hosting</li>
+                          <li><b>Client:</b> Lic. Olivia Oca Varela</li>
+                        </ul>
+                        <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                          {renderLikeButton('Lawyer Olivia Oca')}
+                          <a 
+                            href="https://abogadamariaoliviaocavarela.pages.dev/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            onClick={() => trackEvent('click_link', 'Lawyer Olivia Oca Website')}
+                            style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                          >
+                            Visitar sitio web
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{
-                  marginTop: '20px',
-                  padding: '15px 20px',
-                  background: 'rgba(79, 195, 247, 0.1)',
-                  borderRadius: '10px',
-                  borderLeft: '4px solid #4fc3f7'
-                }}>
-                  <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
-                    <b style={{color: '#4fc3f7'}}>Ready to go digital?</b> From idea to launch — I handle design, development, and deployment. Your business deserves a website that works as hard as you do.
-                  </p>
+                {/* Medical Patient & Clinical Records (Closed System) */}
+                <div className="col-md-4">
+                  <div className="work-box">
+                    <div className="work-img">
+                      <a href="#work" onClick={(e) => openGallery(e, doctorpageGallery)}>
+                        <LazyImage src={require("../images/DOCTORPAGE/medicalCRM.png")} alt="Medical Patient & Clinical Records" className="img-fluid" />
+                      </a>
+                    </div>
+                    <div className="work-content">
+                      <h2 className="w-title">Medical Patient & Clinical Records (Closed System)</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</span>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Stack:</b> React, Supabase (Auth/DB/Storage with RLS), React Hook Form, Cloudflare Hosting</li>
+                          <li><b>Client:</b> Dra Daniela Oca Varela</li>
+                        </ul>
+                        <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          {renderLikeButton('Medical Patient CRM')}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pizzería Rinconcito La Fortuna — Landing Page */}
+                <div className="col-md-4">
+                  <div className="work-box">
+                    <div className="work-img">
+                      <a href="#work" onClick={(e) => openGallery(e, pizzeriaGallery)}>
+                        <LazyImage src={require("../images/PIZZERIA/pizzapromo.png")} alt="Pizzería Rinconcito La Fortuna" className="img-fluid" />
+                      </a>
+                    </div>
+                    <div className="work-content">
+                      <h2 className="w-title">Pizzería Rinconcito La Fortuna — Landing Page</h2>
+                      <div className="w-more">
+                        <span className="w-ctegory">React, CSS (responsive), WhatsApp Click-to-Chat, Cloudflare Pages</span>
+                        <br />
+                        <span>Landing Page</span>
+                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                          <li><b>Stack:</b> React (SPA), CSS responsive (Flex/Grid), Cloudflare Pages, dominio/SSL gestionado con Cloudflare, WhatsApp click-to-chat, enlaces a redes sociales.</li>
+                          <li><b>Rol:</b> Full stack web developer / Google SEO .</li>
+                          <li><b>Cliente:</b> Pizzería Rinconcito La Fortuna.</li>
+                          <li><b>Notas:</b> Navegación por anclas (#home, #menu, #contacto), CTA a WhatsApp desde móvil/desktop y sección de redes para contacto rápido.</li>
+                        </ul>
+                        <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                          {renderLikeButton('Pizzeria Rinconcito')}
+                          <a 
+                            href="https://pizzeria-rinconcito-lafortuna.pages.dev/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            onClick={() => trackEvent('click_link', 'Pizzeria Website')}
+                            style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                          >
+                            Visitar sitio web
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {showGreenEcoPark && (
+                  <div className="col-md-4">
+                    <div className="work-box">
+                      <div className="work-img">
+                        <a href="#work" onClick={(e) => openGallery(e, greenecoparkGallery)}>
+                          <LazyImage src={require("../images/GREENECOPARK/greenecoparkimage0.png")} alt="Green Eco Park — Atracciones y Naturaleza" className="img-fluid" />
+                        </a>
+                      </div>
+                      <div className="work-content">
+                        <h2 className="w-title">Green Eco Park — Atracciones y Naturaleza</h2>
+                        <div className="w-more">
+                          <span className="w-ctegory">Parque ecológico y actividades al aire libre en La Fortuna</span>
+                          <br />
+                          <span>Sitio web</span>
+                          <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                            <li>Experiencia familiar en medio de la naturaleza: senderos, miradores y diversión al aire libre.</li>
+                            <li>Galería con fotos reales del parque para conocer el recorrido antes de visitar.</li>
+                            <li>Información clara sobre horarios, ubicación, tarifas y contacto directo.</li>
+                            <li>Llamados a la acción visibles para planear la visita y resolver dudas.</li>
+                          </ul>
+                          <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                            {renderLikeButton('Green Eco Park')}
+                            <a 
+                              href="https://greenecopark.com/" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              onClick={() => trackEvent('click_link', 'Green Eco Park Website')}
+                              style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                            >
+                              Visitar sitio web
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* CUSTOM WEB SOLUTIONS SHOWCASE */}
+                <div className="col-md-8">
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
+                    padding: '30px',
+                    borderRadius: '16px',
+                    height: '100%',
+                    border: '1px solid rgba(79, 195, 247, 0.3)',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+                  }}>
+                    <h5 style={{color: '#4fc3f7', fontWeight: 'bold', marginBottom: '20px', fontSize: '1.3rem'}}>
+                      Custom Web Solutions
+                    </h5>
+                    <p style={{color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.7', marginBottom: '25px'}}>
+                      I build <b style={{color: '#fff'}}>tailored web applications and digital platforms</b> for businesses across industries. 
+                      From e-commerce stores to professional service websites — I deliver solutions that convert visitors into clients.
+                    </p>
+                    
+                    <div className="row">
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>E-Commerce</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Custom online stores, payment integration, inventory management</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Hotels & Tourism</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Booking systems, galleries, availability calendars, multilingual</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Professional Services</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Lawyers, doctors, consultants — portfolios that build trust</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>Business Platforms</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Dashboards, CRMs, internal tools, admin panels</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>AI Integrations</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Chatbots, smart search, recommendations, automation</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                          <div>
+                            <h6 style={{color: '#fff', fontWeight: 'bold', marginBottom: '5px'}}>SEO & Performance</h6>
+                            <p style={{color: '#94a3b8', fontSize: '0.85rem', margin: 0}}>Fast loading, mobile-first, Google optimized, analytics</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{
+                      marginTop: '20px',
+                      padding: '15px 20px',
+                      background: 'rgba(79, 195, 247, 0.1)',
+                      borderRadius: '10px',
+                      borderLeft: '4px solid #4fc3f7'
+                    }}>
+                      <p style={{color: '#e2e8f0', margin: 0, fontSize: '0.95rem'}}>
+                        <b style={{color: '#4fc3f7'}}>Ready to go digital?</b> From idea to launch — I handle design, development, and deployment. Your business deserves a website that works as hard as you do.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* View Less Web Projects Button */}
-          <div className="text-center mb-4">
-            <button 
-              onClick={this.toggleWebProjects}
-              className="btn btn-outline-secondary"
-              style={{
-                padding: '10px 25px',
-                fontSize: '0.95rem',
-                borderRadius: '8px'
-              }}
-            >
-              View Less
-            </button>
-          </div>
-          </>
+              {/* View Less Web Projects Button */}
+              <div className="text-center mb-4">
+                <button 
+                  onClick={toggleWebProjects}
+                  className="btn btn-outline-secondary"
+                  style={{
+                    padding: '10px 25px',
+                    fontSize: '0.95rem',
+                    borderRadius: '8px'
+                  }}
+                >
+                  View Less
+                </button>
+              </div>
+            </>
           )}
 
           {/* PRODUCTS */}
@@ -894,7 +1040,7 @@ class Portfolio extends React.Component {
               {/* Carrusel de Imágenes */}
               <div style={{ marginTop: '30px' }}>
                 <Carousel 
-                  images={this.state.allservicesImages} 
+                  images={allservicesImages} 
                   title="Custom services"
                 />
               </div>
@@ -920,6 +1066,7 @@ class Portfolio extends React.Component {
                     src={promoVideo}
                     poster=""
                     controls
+                    onPlay={() => trackEvent('video_play', 'Ruff and Tuff Gameplay Video')}
                     style={{width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.3)'}}
                   />
                   <p className="mt-3" style={{color: '#94a3b8', fontSize: '0.95em'}}>
@@ -931,53 +1078,70 @@ class Portfolio extends React.Component {
           </div>
 
           <div className="row">
+            {/* Skull Troop */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={st1} data-lightbox="gallery-skulltroop">
+                  <a href="#work" onClick={(e) => openGallery(e, skullTroopGallery)}>
                     <LazyImage src={st1} alt="Skull Troop" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
-                    <h2 className="w-title">Skull Troop (PC, Mobile)</h2>
-                      <div className="w-more">
-                        <span className="w-ctegory">Unity 3D, Mobile Optimization, UI, Shooter/Tower Defense</span>
-                        <br />
-                        <span>It’s a combination of shooter and tower defense. Command your soldiers, protect the General of our army, conquer territories, and eliminate the General of the Enemy army to win the battle. Good luck!</span>
-                        <br />
-                        <a href="https://yeoogames.itch.io/skull-troop" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
-                        <br />
-                        <a href="https://www.youtube.com/watch?v=WzLCk57-Pow" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                          Ver demo en YouTube
+                  <h2 className="w-title">Skull Troop (PC, Mobile)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Unity 3D, Mobile Optimization, UI, Shooter/Tower Defense</span>
+                    <br />
+                    <span>It’s a combination of shooter and tower defense. Command your soldiers, protect the General of our army, conquer territories, and eliminate the General of the Enemy army to win the battle. Good luck!</span>
+                    <br />
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Unity 3D</b></li>
+                      <li><b>Mobile Performance Optimization:</b></li>
+                      <ul>
+                        <li>Occlusion Culling: Rendering only what's necessary, improving performance.</li>
+                        <li>Texture Compression and Mesh Optimization: Reducing texture and model complexity to improve frame rate and reduce memory consumption.</li>
+                      </ul>
+                      <li><b>User Interface (UI):</b> Intuitive and user-friendly interface for touch screens, optimizing controls and accessibility for Android.</li>
+                      <li><b>Unity Input System:</b> Control commands on touch screens, adapting shooter gameplay for mobile devices.</li>
+                      <li><b>Testing and Debugging on Real Devices:</b> Ensuring compatibility and optimal performance across different Android hardware.</li>
+                      <li><b>Multi-Platform Deployment:</b> Handling configuration differences between Oculus Quest and Android.</li>
+                      <li><b>Play Store:</b> APK to AAB transformation and permission handling.</li>
+                    </ul>
+                    
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        {renderLikeButton('Skull Troop')}
+                        <a 
+                          href="https://yeoogames.itch.io/skull-troop" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          onClick={() => trackEvent('click_link', 'Skull Troop Itch.io')}
+                          style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                        >
+                          DOWNLOAD DEMO APK
                         </a>
-                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                          <li><b>Unity 3D</b></li>
-                          <li><b>Mobile Performance Optimization:</b></li>
-                          <ul>
-                            <li>Occlusion Culling: Rendering only what's necessary, improving performance.</li>
-                            <li>Texture Compression and Mesh Optimization: Reducing texture and model complexity to improve frame rate and reduce memory consumption.</li>
-                          </ul>
-                          <li><b>User Interface (UI):</b> Intuitive and user-friendly interface for touch screens, optimizing controls and accessibility for Android.</li>
-                          <li><b>Unity Input System:</b> Control commands on touch screens, adapting shooter gameplay for mobile devices.</li>
-                          <li><b>Testing and Debugging on Real Devices:</b> Ensuring compatibility and optimal performance across different Android hardware.</li>
-                          <li><b>Multi-Platform Deployment:</b> Handling configuration differences between Oculus Quest and Android.</li>
-                          <li><b>Play Store:</b> APK to AAB transformation and permission handling.</li>
-                        </ul>
                       </div>
+                      <a 
+                        href="https://www.youtube.com/watch?v=WzLCk57-Pow" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Skull Troop YouTube')}
+                        style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', fontSize: '0.9rem'}}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Ver demo en YouTube
+                      </a>
+                    </div>
                   </div>
-                {/* cierre de work-content, no debe haber </a> aquí */}
-                <a href={st2} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
-                <a href={st3} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
-                <a href={st4} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
-                <a href={st5} data-lightbox="gallery-skulltroop" style={{ display: "none" }}>Imagen extra</a>
+                </div>
               </div>
             </div>
+
+            {/* Skull Troop VR */}
             <div className="col-md-4">
               <div className="work-box">
                 <div className="work-img">
-                  <a href={stvr1} data-lightbox="gallery-skulltroopvr">
-                    <img src={stvr1} alt="Skull Troop VR" className="img-fluid" />
+                  <a href="#work" onClick={(e) => openGallery(e, skullTroopVRGallery)}>
+                    <LazyImage src={stvr1} alt="Skull Troop VR" className="img-fluid" />
                   </a>
                 </div>
                 <div className="work-content">
@@ -987,10 +1151,6 @@ class Portfolio extends React.Component {
                     <br />
                     <span>You are the general of the army, send your soldiers to eliminate the enemy, and don’t neglect the towers!</span>
                     <br />
-                    <a href="https://youtu.be/tlA6WmyO5rM" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                      Ver demo en YouTube
-                    </a>
                     <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
                       <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
                       <li><b>C#</b></li>
@@ -1004,128 +1164,170 @@ class Portfolio extends React.Component {
                       <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
                       <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
                     </ul>
-                  </div>
-                </div>
-                <a href={stvr2} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr3} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr5} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr6} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr8} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr9} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-                <a href={stvr10} data-lightbox="gallery-skulltroopvr" style={{ display: "none" }}>Imagen extra</a>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={skf1} data-lightbox="gallery-skullfight">
-                    <img src={skf1} alt="Skull Fights" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                    <h2 className="w-title">Skull Fights (PC/Mobile)</h2>
-                      <div className="w-more">
-                        <span className="w-ctegory">Unity 3D, C#, Blender, Game Design, Audio Design</span>
-                        <br />
-                        <span>Hand-to-hand combat game, only the one with the most skills survives in the octagon.</span>
-                        <br />
-                        <a href="https://yeoogames.itch.io/skull-fight" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
-                        <br />
-                        <a href="https://www.youtube.com/watch?v=HGFKOuOUDhY" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                          Ver demo en YouTube
-                        </a>
-                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                          <li><b>Unity 3D C#</b></li>
-                          <li><b>Game Design:</b> Mechanics, gameplay, levels, game balance, and user experience.</li>
-                          <li><b>3D Modeling:</b> Blender and makehuman-community</li>
-                          <li><b>Audio Design and Composition:</b> Sound effects and original music using FL Studio and Bandlab.</li>
-                          <li><b>User Interface (UI) Design:</b> Interface elements and navigation.</li>
-                          <li><b>Shaders and Post-Processing:</b> Unity Post-Processing Stack.</li>
-                          <li><b>Project Management:</b> Full game lifecycle management, from planning to release and testing.</li>
-                          <li><b>Quality Assurance (QA):</b> Testing and performance optimization.</li>
-                          <li><b>Multimedia Integration:</b> Images, animations, and music in Unity.</li>
-                        </ul>
+                    
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        {renderLikeButton('Skull Troop VR')}
                       </div>
-                  </div>
-                {/* cierre de work-content, no debe haber </a> aquí */}
-                <a href={skf2} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
-                <a href={skf3} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
-                <a href={skf4} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
-                <a href={skf5} data-lightbox="gallery-skullfight" style={{ display: "none" }}>Imagen extra</a>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="work-box">
-                <div className="work-img">
-                  <a href={mm1} data-lightbox="gallery-misionmoney">
-                    <img src={mm1} alt="Mission Money" className="img-fluid" />
-                  </a>
-                </div>
-                <div className="work-content">
-                    <h2 className="w-title">Mission Money (PC/VR)</h2>
-                      <div className="w-more">
-                        <span className="w-ctegory">Unity 3D, C#, XR Interaction Toolkit, VR Optimization, Game Design, Audio Design</span>
-                        <br />
-                        <span>Shooter for VR. They stole from the wrong person—get your money back by eliminating the enemies in a nighttime ambush.</span>
-                        <br />
-                        <a href="https://www.youtube.com/watch?v=a9VQpjFfpTU" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', margin:'8px 0'}}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign:'middle'}}><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                          Ver demo en YouTube
-                        </a>
-                        <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                          <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
-                          <li><b>C#</b></li>
-                          <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
-                          <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
-                          <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
-                          <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
-                          <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
-                          <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
-                        </ul>
-                      </div>
-                  </div>
-                {/* cierre de work-content, no debe haber </a> aquí */}
-                <a href={mm2} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm3} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm4} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm5} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm6} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm7} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-                <a href={mm8} data-lightbox="gallery-misionmoney" style={{ display: "none" }}>Imagen extra</a>
-              </div>
-            </div>
-            {/* Nuevo juego: Penguin Adventure */}
-            <div className="col-md-4">
-              <div className="work-box">
-                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_1.png")} data-lightbox="gallery-penguinadventure">
-                  <div className="work-img">
-                    <img src={require("../images/PENGUINADVENTURE/MISIONMONEY_1.png")} alt="Penguin Adventure" className="img-fluid" />
-                  </div>
-                  <div className="work-content">
-                    <h2 className="w-title">Penguin Adventure (2D)</h2>
-                    <div className="w-more">
-                      <span className="w-ctegory">Unity 2D, C#, Game Design, Level Design, Physics 2D, Audio, UI, AI</span>
-                      <br />
-                      <span>My first project!!! Educational 2D adventure game, you must collect solar panels and survive the obstacles, storytelling included.</span>
-                      <br />
-                      <a href="https://yeoogames.itch.io/penguin-adventure" target="_blank" rel="noopener noreferrer" style={{fontWeight:'bold', color:'#007bff'}}>DOWNLOAD DEMO APK</a>
-                      <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
-                        <li><b>Unity 2D Development:</b> 2D platformer game from scratch, game logic, mechanics, and level design.</li>
-                        <li><b>C# Scripting:</b> Character logic, collision detection, player movement, enemy control.</li>
-                        <li><b>Game Design:</b> Gameplay, platform mechanics, obstacle creation (traps, enemies).</li>
-                        <li><b>Level Design:</b> Unity Tilemap for environments.</li>
-                        <li><b>Physics 2D:</b> Collisions, moving platforms, interactive elements.</li>
-                        <li><b>Audio Design:</b> Sound effects and music integration.</li>
-                        <li><b>User Interface (UI) Design:</b> HUD, menus, interactive elements.</li>
-                        <li><b>Basic AI Scripting:</b> Enemy behaviors (movement, attacks).</li>
-                        <li><b>Character Controller:</b> Custom 2D controller for running, jumping, attacking with a bat.</li>
-                      </ul>
+                      <a 
+                        href="https://youtu.be/tlA6WmyO5rM" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Skull Troop VR YouTube')}
+                        style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', fontSize: '0.9rem'}}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Ver demo en YouTube
+                      </a>
                     </div>
                   </div>
-                </a>
-                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_2.png")} data-lightbox="gallery-penguinadventure" style={{ display: "none" }}>Imagen extra</a>
-                <a href={require("../images/PENGUINADVENTURE/MISIONMONEY_3.png")} data-lightbox="gallery-penguinadventure" style={{ display: "none" }}>Imagen extra</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Skull Fights */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href="#work" onClick={(e) => openGallery(e, skullFightGallery)}>
+                    <LazyImage src={skf1} alt="Skull Fights" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Skull Fights (PC/Mobile)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Unity 3D, C#, Blender, Game Design, Audio Design</span>
+                    <br />
+                    <span>Hand-to-hand combat game, only the one with the most skills survives in the octagon.</span>
+                    <br />
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Unity 3D C#</b></li>
+                      <li><b>Game Design:</b> Mechanics, gameplay, levels, game balance, and user experience.</li>
+                      <li><b>3D Modeling:</b> Blender and makehuman-community</li>
+                      <li><b>Audio Design and Composition:</b> Sound effects and original music using FL Studio and Bandlab.</li>
+                      <li><b>User Interface (UI) Design:</b> Interface elements and navigation.</li>
+                      <li><b>Shaders and Post-Processing:</b> Unity Post-Processing Stack.</li>
+                      <li><b>Project Management:</b> Full game lifecycle management, from planning to release and testing.</li>
+                      <li><b>Quality Assurance (QA):</b> Testing and performance optimization.</li>
+                      <li><b>Multimedia Integration:</b> Images, animations, and music in Unity.</li>
+                    </ul>
+                    
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        {renderLikeButton('Skull Fights')}
+                        <a 
+                          href="https://yeoogames.itch.io/skull-fight" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          onClick={() => trackEvent('click_link', 'Skull Fights Itch.io')}
+                          style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                        >
+                          DOWNLOAD DEMO APK
+                        </a>
+                      </div>
+                      <a 
+                        href="https://www.youtube.com/watch?v=HGFKOuOUDhY" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Skull Fights YouTube')}
+                        style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', fontSize: '0.9rem'}}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Ver demo en YouTube
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mission Money */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href="#work" onClick={(e) => openGallery(e, misionMoneyGallery)}>
+                    <LazyImage src={mm1} alt="Mission Money" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Mission Money (PC/VR)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Unity 3D, C#, XR Interaction Toolkit, VR Optimization, Game Design, Audio Design</span>
+                    <br />
+                    <span>Shooter for VR. They stole from the wrong person—get your money back by eliminating the enemies in a nighttime ambush.</span>
+                    <br />
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Unity 3D:</b> Full game development using Unity to create game logic, level design, and optimization for VR.</li>
+                      <li><b>C#</b></li>
+                      <li><b>XR Interaction Toolkit:</b> Use of XR Plugin Management to integrate and optimize the game for Oculus Quest 2.</li>
+                      <li><b>VR Optimization:</b> Performance optimization for standalone devices like Oculus Quest 2, ensuring high FPS and a smooth experience.</li>
+                      <li><b>Game Design:</b> Shooter and tower defense mechanics, level design, difficulty balancing, and user experience.</li>
+                      <li><b>Level Design:</b> Strategic placement of enemies, tanks, airplanes, and defenses for challenging gameplay.</li>
+                      <li><b>Audio Design:</b> Sound effects and background music for immersion.</li>
+                      <li><b>User Experience (UX) in VR:</b> UI design and testing for VR, considering player interaction with environment and mechanics.</li>
+                    </ul>
+                    
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        {renderLikeButton('Mission Money')}
+                      </div>
+                      <a 
+                        href="https://www.youtube.com/watch?v=a9VQpjFfpTU" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Mission Money YouTube')}
+                        style={{fontWeight:'bold', color:'#e53935', display:'inline-flex', alignItems:'center', gap:'7px', fontSize: '0.9rem'}}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Ver demo en YouTube
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Penguin Adventure */}
+            <div className="col-md-4">
+              <div className="work-box">
+                <div className="work-img">
+                  <a href="#work" onClick={(e) => openGallery(e, penguinAdventureGallery)}>
+                    <LazyImage src={penguinAdventureGallery[0]} alt="Penguin Adventure" className="img-fluid" />
+                  </a>
+                </div>
+                <div className="work-content">
+                  <h2 className="w-title">Penguin Adventure (2D)</h2>
+                  <div className="w-more">
+                    <span className="w-ctegory">Unity 2D, C#, Game Design, Level Design, Physics 2D, Audio, UI, AI</span>
+                    <br />
+                    <span>My first project!!! Educational 2D adventure game, you must collect solar panels and survive the obstacles, storytelling included.</span>
+                    <br />
+                    <ul style={{marginTop:'10px', marginBottom:'0', paddingLeft:'18px', fontSize:'0.95em'}}>
+                      <li><b>Unity 2D Development:</b> 2D platformer game from scratch, game logic, mechanics, and level design.</li>
+                      <li><b>C# Scripting:</b> Character logic, collision detection, player movement, enemy control.</li>
+                      <li><b>Game Design:</b> Gameplay, platform mechanics, obstacle creation (traps, enemies).</li>
+                      <li><b>Level Design:</b> Unity Tilemap for environments.</li>
+                      <li><b>Physics 2D:</b> Collisions, moving platforms, interactive elements.</li>
+                      <li><b>Audio Design:</b> Sound effects and music integration.</li>
+                      <li><b>User Interface (UI) Design:</b> HUD, menus, interactive elements.</li>
+                      <li><b>Basic AI Scripting:</b> Enemy behaviors (movement, attacks).</li>
+                      <li><b>Character Controller:</b> Custom 2D controller for running, jumping, attacking with a bat.</li>
+                    </ul>
+                    
+                    <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
+                      {renderLikeButton('Penguin Adventure')}
+                      <a 
+                        href="https://yeoogames.itch.io/penguin-adventure" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_link', 'Penguin Adventure Itch.io')}
+                        style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
+                      >
+                        DOWNLOAD DEMO APK
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1142,7 +1344,6 @@ class Portfolio extends React.Component {
                 position: 'relative',
                 overflow: 'hidden'
               }}>
-                {/* Glow effect */}
                 <div style={{
                   position: 'absolute',
                   top: '-50%',
@@ -1240,8 +1441,16 @@ class Portfolio extends React.Component {
           </div>
         </div>
       </section>
-    );
-  }
-}
+
+      <Lightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(-1)}
+        onPrev={() => setLightboxIndex((prev) => (prev === 0 ? lightboxImages.length - 1 : prev - 1))}
+        onNext={() => setLightboxIndex((prev) => (prev === lightboxImages.length - 1 ? 0 : prev + 1))}
+      />
+    </>
+  );
+};
 
 export default Portfolio;

@@ -8,6 +8,7 @@ import Portfolio from './components/portfolio.jsx';
 import Contact from './components/contact.jsx';
 import Preloader from './components/preloader';
 import WhatsAppButton from './components/whatsapp-button.jsx';
+import { trackEvent } from './utils/analytics';
 
 // Lazy load lighter components for better initial load time
 const Services = lazy(() => import('./components/services.jsx'));
@@ -15,6 +16,12 @@ const Experience = lazy(() => import('./components/experience.jsx'));
 
 export default function Main(){
   const location = useLocation();
+
+  useEffect(() => {
+    // Record page visit
+    const details = `UA: ${navigator.userAgent} | Lang: ${navigator.language}`;
+    trackEvent('visit', 'Home', details);
+  }, []);
 
   useEffect(()=>{
     // map path to section id

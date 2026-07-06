@@ -1,30 +1,45 @@
-import React from 'react';
-import $ from 'jquery';
-import '../libs/easing.js'
+import React, { useState, useEffect } from 'react';
 
-class BackToTop extends React.Component {
-    componentDidMount(){
-        $('.back-to-top').click(function(){
-            $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-            return false;
-          });
-        window.addEventListener('scroll', ()=>{
-            if(window.pageYOffset > 100){
-                document.querySelector('.back-to-top').classList.remove("fadeOut");
-                document.querySelector('.back-to-top').style.display = "block";
-                document.querySelector('.back-to-top').classList.add("fadeIn");
-            }else {
-                document.querySelector('.back-to-top').classList.remove("fadeIn");
-                document.querySelector('.back-to-top').classList.add("fadeOut");
-            }
-        });
-    }
+const BackToTop = () => {
+  const [visible, setVisible] = useState(false);
 
-    render(){
-    return <a href="/" className="back-to-top animated" aria-label="Back to top"><i className="fa fa-chevron-up"></i></a>;
-    }
-}
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 100) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <a
+      href="#page-top"
+      onClick={handleClick}
+      className={`back-to-top animated ${visible ? 'fadeIn' : 'fadeOut'}`}
+      style={{
+        display: 'block',
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? 'auto' : 'none',
+        transition: 'opacity 0.4s ease-in-out',
+      }}
+      aria-label="Back to top"
+    >
+      <i className="fa fa-chevron-up"></i>
+    </a>
+  );
+};
 
 export default BackToTop;
-
-
