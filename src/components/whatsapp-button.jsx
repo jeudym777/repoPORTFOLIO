@@ -1,7 +1,7 @@
 import React from "react";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "50687025190"; // Costa Rica +506
+  const phoneNumber = "50672344390"; // Costa Rica +506
   const message = "¡Hola! Estoy interesado en sus servicios de IA y desarrollo de software.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
