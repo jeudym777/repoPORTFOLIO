@@ -602,15 +602,6 @@ const Portfolio = () => {
                     </ul>
                     <div style={{ marginTop: 'auto', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', width: '100%' }}>
                       {renderLikeButton('Hotel Campo Arenal')}
-                      <a 
-                        href="https://camposarenal.com/es" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        onClick={() => trackEvent('click_link', 'Hotel Campo Arenal Website')}
-                        style={{fontWeight:'bold', color:'#007bff', fontSize: '0.9rem'}}
-                      >
-                        Visit website
-                      </a>
                     </div>
                   </div>
                 </div>
