@@ -11,7 +11,6 @@ import WhatsAppButton from './components/whatsapp-button.jsx';
 import { trackEvent } from './utils/analytics';
 
 // Lazy load lighter components for better initial load time
-const Services = lazy(() => import('./components/services.jsx'));
 const Experience = lazy(() => import('./components/experience.jsx'));
 
 export default function Main(){
@@ -48,7 +47,7 @@ export default function Main(){
       window.scrollTo({top:0, behavior: 'smooth'});
       return;
     }
-    const id = path; // expects /services -> element with id="services"
+    const id = path; // expects /work -> element with id="work"
     // small delay to ensure elements are mounted
     setTimeout(()=>{
       const el = document.getElementById(id);
@@ -69,7 +68,6 @@ export default function Main(){
       <Portfolio />
       
       <Suspense fallback={<div style={{minHeight: '500px'}}></div>}>
-        <Services />
         <Experience />
       </Suspense>
       

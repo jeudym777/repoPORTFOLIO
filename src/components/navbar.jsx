@@ -15,7 +15,7 @@ const Navbar = () => {
         nav?.classList.remove("navbar-reduce");
       }
 
-      const sections = ["home", "services", "work", "about", "contact"];
+      const sections = ["home", "work", "about", "contact"];
       const scrollPosition = window.pageYOffset + 120;
 
       for (const sectionId of sections) {
@@ -89,15 +89,6 @@ const Navbar = () => {
                 onClick={(e) => handleLinkClick(e, "home")}
               >
                 Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a 
-                className={`nav-link ${activeSection === "services" ? "active" : ""}`} 
-                href="#services"
-                onClick={(e) => handleLinkClick(e, "services")}
-              >
-                Services
               </a>
             </li>
             <li className="nav-item">

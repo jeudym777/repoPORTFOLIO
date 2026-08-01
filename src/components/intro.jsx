@@ -74,15 +74,15 @@ const Intro = () => {
                 </a>
                 <a
                   className="btn btn-outline-light px-4"
-                  href="#services"
-                  onClick={(e) => handleScrollToSection(e, "services")}
+                  href="#contact"
+                  onClick={(e) => handleScrollToSection(e, "contact")}
                   role="button"
                   style={{ 
                     fontSize: '1rem', 
                     padding: '12px 28px'
                   }}
                 >
-                  Services
+                  Contact Me
                 </a>
               </div>
             </div>
