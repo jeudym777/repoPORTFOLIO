@@ -20,13 +20,31 @@ export default function Main(){
     const recordVisit = async () => {
       let geoInfo = "Unknown Location";
       try {
-        const response = await fetch("https://freeipapi.com/api/json");
+        // Try ipapi.co first (CORS-friendly)
+        const response = await fetch("https://ipapi.co/json/");
         if (response.ok) {
           const geo = await response.json();
-          geoInfo = `${geo.cityName}, ${geo.regionName}, ${geo.countryName} (IP: ${geo.ipAddress})`;
+          geoInfo = `${geo.city || "Unknown City"}, ${geo.region || "Unknown Region"}, ${geo.country_name || "Unknown Country"} (IP: ${geo.ip || "Unknown IP"})`;
+        } else {
+          // Fallback to db-ip
+          const responseFallback = await fetch("https://api.db-ip.com/v2/free/self");
+          if (responseFallback.ok) {
+            const geo = await responseFallback.json();
+            geoInfo = `${geo.city || "Unknown City"}, ${geo.stateProv || "Unknown Region"}, ${geo.countryName || "Unknown Country"} (IP: ${geo.ipAddress || "Unknown IP"})`;
+          }
         }
       } catch (e) {
-        console.warn("Could not fetch geolocation:", e);
+        console.warn("Could not fetch geolocation from primary/secondary API, trying simple IP:", e);
+        try {
+          // Final fallback to simple ipify
+          const responseIp = await fetch("https://api.ipify.org?format=json");
+          if (responseIp.ok) {
+            const data = await responseIp.json();
+            geoInfo = `IP: ${data.ip}`;
+          }
+        } catch (ipErr) {
+          console.warn("Could not fetch simple IP:", ipErr);
+        }
       }
       
       const referrer = document.referrer ? ` | Referrer: ${document.referrer}` : "";
